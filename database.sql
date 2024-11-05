@@ -33,13 +33,11 @@ CREATE TABLE IF NOT EXISTS Animales (
     animal_id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     tipo_animal ENUM('Perro', 'Gato', 'Otro') NOT NULL,
-    edad INT,
-    raza VARCHAR(50),
     tamaño ENUM('Pequeño', 'Mediano', 'Grande'),
     foto_url VARCHAR(255),
     descripcion TEXT,
     vacunas VARCHAR(255),
-    estado_adopcion ENUM('Disponible', 'Adoptado') NOT NULL,
+    estado_adopcion ENUM('Disponible', 'Adoptado', 'Fallecido') NOT NULL,
     comportamiento TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -50,6 +48,7 @@ CREATE TABLE IF NOT EXISTS Adopciones (
     adopcion_id INT AUTO_INCREMENT PRIMARY KEY,
     animal_id INT NOT NULL,
     user_id INT NOT NULL,
+    cita_id INT, -- Nueva columna para la llave foránea de citas
     fecha_inicial DATE NOT NULL,
     estado_adopcion ENUM('Pendiente', 'Aprobada', 'Rechazada') DEFAULT 'Pendiente',
     fecha_final DATE,
@@ -57,21 +56,21 @@ CREATE TABLE IF NOT EXISTS Adopciones (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (animal_id) REFERENCES Animales(animal_id),
-    FOREIGN KEY (user_id) REFERENCES Usuarios(user_id)
+    FOREIGN KEY (user_id) REFERENCES Usuarios(user_id),
+    FOREIGN KEY (cita_id) REFERENCES Citas(cita_id) -- Llave foránea para citas
 );
 
 -- Tabla de Citas
 CREATE TABLE IF NOT EXISTS Citas (
     cita_id INT AUTO_INCREMENT PRIMARY KEY,
+    animal_id INT NOT NULL,
     user_id INT NOT NULL,
-    animal_id INT,
-    fecha_cita DATETIME NOT NULL,
-    tipo_cita ENUM('Consulta', 'Adopción') NOT NULL,
-    comentarios TEXT,
+    fecha_cita TIMESTAMP NOT NULL,
+    motivo TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES Usuarios(user_id),
-    FOREIGN KEY (animal_id) REFERENCES Animales(animal_id)
+    FOREIGN KEY (animal_id) REFERENCES Animales(animal_id),
+    FOREIGN KEY (user_id) REFERENCES Usuarios(user_id)
 );
 
 CREATE TABLE IF NOT EXISTS Donaciones (
