@@ -7,4 +7,4 @@ function showNextImage() {
   carouselItems[currentIndex].classList.add('active');
 }
 
-setInterval(showNextImage, 5000); 
+setInterval(showNextImage, 4000); 
