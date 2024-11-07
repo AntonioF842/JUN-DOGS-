@@ -40,30 +40,10 @@ body {
     background-color: rgb(206, 192, 170);
 }
 
-.carousel-inner {
-    align-items: center;
-    position: center;
-    overflow: hidden;
-    width: 100%;
-    height: 500px; 
-    border-radius: 20px;
-  }
+.card {
+    background-color: rgb(200, 245, 245);
+}
 
-  .carousel-item {
-    margin-top: 10%;
-    margin-left: 5%;
-    position: center;
-    width: 40%;
-    height: 30%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
-
-  .carousel-item.active {
-    display: flex;
-    align-items: center;
-    opacity: 1;
-    position: center;
-    transition: opacity 1s ease-in-out;
-  }
-  
+.card.card-body {
+    background-color: rgb(127, 36, 143);
+}
