@@ -38,7 +38,7 @@ if ($stmt->num_rows > 0) {
     $stmt->bind_result($password_hash);
     $stmt->fetch();
     // Verify the provided password against the stored hash
-    if (password_verify($passwordUser, $password_hash)) {
+    if ($passwordUser === $password_hash) {
         echo json_encode(['success' => true]);
     } else {
         echo json_encode(['success' => false, 'message' => 'Invalid password']);
