@@ -1,0 +1,49 @@
+.navbar {
+    font-family: "Itim", cursive;
+    font-weight: 400;
+    font-style: normal;
+    background-color: rgba(200, 178, 151, 0.811);
+    display: flex;                 
+    align-items: center;           
+    justify-content: space-between;
+    padding: 10px 25px;
+}
+
+.navbar img{
+    width: 65px;
+}
+
+.navbar h1{
+    font-size: 40px;
+    color:rgb(78, 59, 37)
+}
+.navbar a {
+    margin-right: 10px;
+    margin-right: 10px;
+    color:white;
+    text-decoration: none;
+    transition: color 0.3s, font-size 0.3s;
+    padding: 2px;
+}
+
+.navbar a:hover{
+    color: rgb(78, 59, 37);
+    font-size: 25px;
+}
+
+.navbar .links {
+    display: flex;
+    gap: 5px; 
+}
+
+body {
+    background-color: rgb(206, 192, 170);
+}
+
+.card {
+    background-color: rgb(200, 245, 245);
+}
+
+.card.card-body {
+    background-color: rgb(127, 36, 143);
+}
