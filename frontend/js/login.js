@@ -24,7 +24,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         const loginMessage = document.getElementById('loginMessage');
         // Display a success or error message based on the response
         if (data.success) {
-            loginMessage.textContent = 'Login successful!';
+            loginMessage.textContent = `Login successful! Welcome, ${data.nombre} (ID: ${data.user_id})`;
             loginMessage.classList.add('text-success');
             loginMessage.classList.remove('text-danger');
         } else {

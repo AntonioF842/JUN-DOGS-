@@ -25,7 +25,7 @@ if ($stmt->num_rows > 0) {
     $stmt->bind_result($user_id, $nombre, $apellido_paterno, $apellido_materno, $email, $password_db);
     $stmt->fetch();
     // Verificar la contraseña
-    if ($password === $password_db) {
+    if($password=== $password_db) {
         // Almacenar la información del usuario en la sesión
         $_SESSION['user_id'] = $user_id;
         $_SESSION['nombre'] = $nombre;
@@ -33,7 +33,7 @@ if ($stmt->num_rows > 0) {
         $_SESSION['apellido_materno'] = $apellido_materno;
         $_SESSION['email'] = $email;
         
-        $response = ['success' => true];
+        $response = ['success' => true, 'user_id' => $user_id, 'nombre' => $nombre];
     } else {
         $response = ['success' => false, 'message' => 'Invalid password'];
     }
