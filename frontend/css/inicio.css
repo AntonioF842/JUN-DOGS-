@@ -1,6 +1,6 @@
 /* Fondo para toda la página */
 body {
-    background-color: #FFDAC1; /* Establece el color de fondo para todo el body */
+    background-color: #FFF5CD; /* Establece el color de fondo para todo el body */
     margin: 0;
     padding: 0;
 }
@@ -9,7 +9,7 @@ body {
 .navbar {
     font-family: "Itim", cursive;
     font-weight: 400;
-    background-color: #FFDAC1;
+    background-color: #FFCFB3;
     display: flex;
     align-items: center;
     justify-content: center;  /* Distribuye los elementos a los lados */
