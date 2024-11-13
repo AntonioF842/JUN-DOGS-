@@ -60,15 +60,15 @@ body {
 /* Carrusel */
 .carousel-inner {
     width: 80%; /* Limita el ancho del carrusel a un 80% del contenedor */
-    max-width: 900px; /* Establece un ancho máximo para el carrusel */
+    max-width: 1000px; /* Establece un ancho máximo para el carrusel */
     margin: 0 auto; /* Centra el carrusel */
-    max-height: 350px; /* Ajusta la altura para mantener la forma rectangular */
+    max-height: 450px; /* Ajusta la altura para mantener la forma rectangular */
     overflow: hidden;
 }
 
 .carousel-item img {
     width: 100%; /* Asegura que las imágenes ocupen todo el ancho del carrusel */
-    height: 350px; /* Mantiene una altura fija para la imagen */
+    height: 450px; /* Mantiene una altura fija para la imagen */
     object-fit: cover; /* Hace que las imágenes se ajusten bien */
     border-radius: 15px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);

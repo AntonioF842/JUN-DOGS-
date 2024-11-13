@@ -1,65 +1,109 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina principal</title>
+    <title>¿Quiénes Somos?</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/inicio.css">
     <link rel="shortcut icon" href="./imagenes/favicon.png" type="image/x-icon">
-    
+    <style>
+        /* Estilo para el enlace del nombre Junt-Dogs */
+        .navbar-link {
+            color: #000; /* Color normal del texto */
+            text-decoration: none; /* Quitar subrayado */
+            font-size: 2rem; /* Asegurarse de que no cambie de tamaño */
+            transition: color 0.3s ease; /* Animación suave para el cambio de color */
+        }
+
+        /* Estilo cuando el ratón pasa sobre el enlace */
+        .navbar-link:hover {
+            color: #3f2d21; /* Color al pasar el ratón */
+        }
+    </style>
 </head>
-<div class="navbar">
-    <h1>Junt-Dogs</h1>
-    <img src="./imagenes/nav.png" alt="huellitas">
-    <a href="Adopciones.html">Adopciones</a>
-    <a href="Inicio.html">Inicio</a>
-    <a href="InicioSesion.html">Inicio de Sesión</a>
-</div>
+
 <body>
-  <hr  style="border: 0px; height: 5px; background-color: #3f2d21;">
-  <div class="container mt-5">
-    <div class="card" style="width: 18rem;" >
-        <img src="https://offloadmedia.feverup.com/cdmxsecreta.com/wp-content/uploads/2022/07/29045105/albergue-perros-central-de-abasto.jpg" class="card-img-top" alt="...">
-        <div class="card-body" style="background-color: rgb(190, 184, 152);">
-          <h5 class="card-title"><b>¿Que es un albergue?</b></h5>
-          <p class="card-text">Un albergue de perritos es un lugar especial donde se cuida a los perros que han sido abandonados, perdidos o rescatados de situaciones difíciles.</p>
-          <a href="https://www.worldpackers.com/es/articles/albergues-de-animales" class="btn btn-info" target="_blank">Mas informacion</a>
+    <div class="navbar">
+        <img src="./imagenes/nav.png" alt="huellitas">
+        <h1><a href="Inicio.html" class="navbar-link">Junt-Dogs</a></h1>
+        <img src="./imagenes/nav.png" alt="huellitas">
+        <div class="links"> 
+            <a href="Adopciones.html">¿Cómo adoptar?</a>
+            <a href="Nosotros.html">¿Quiénes Somos?</a>
+            <a href="Testimonios.html">Testimonios</a>
+            <a href="Contacto.html">Contacto</a>
+            <button class="btn btn-light" onclick="window.location.href='InicioSesion.html'">Sign in</button>
+            <button class="btn btn-dark">Register</button>
         </div>
-      </div>
-  </div>
-  <div class="container mt-5">
-    <div class="card" style="width: 18rem;">
-        <img src="https://res.cloudinary.com/worldpackers/image/upload/c_limit,f_auto,q_auto,w_1140/xumsrd8jigipeuiqqsao" class="card-img-top" alt="...">
-        <div class="card-body" style="background-color: rgb(190, 184, 152);">
-          <h5 class="card-title">Mision</h5>
-          <p class="card-text">Brindar refugio, cuidado y amor a perros abandonados y maltratados, buscando encontrarles un hogar responsable y fomentar la adopción responsable.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+
+    <hr style="border: 0px; height: 5px; background-color: #3f2d21;">
+
+    <div class="container text-center mt-5">
+        <h1 class="mb-4" style="font-weight: bold; color: #3f2d21;">¿Quiénes Somos?</h1>
+    </div>
+
+    <!-- Section 1: Información general -->
+    <div class="container my-5 p-4" style="background-color: #fff3e0; border-radius: 10px;">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="https://offloadmedia.feverup.com/cdmxsecreta.com/wp-content/uploads/2022/07/29045105/albergue-perros-central-de-abasto.jpg" class="img-fluid rounded" alt="Junt-Dogs">
+            </div>
+            <div class="col-md-6">
+                <h2>Junt-Dogs</h2>
+                <p>Fundación</p>
+                <p>Un albergue de perritos es un lugar especial donde se cuida a los perros que han sido abandonados, perdidos o rescatados de situaciones difíciles.</p>
+                <a href="https://www.worldpackers.com/es/articles/albergues-de-animales" class="btn btn-info mt-2" target="_blank">Más información</a>
+            </div>
         </div>
+    </div>
+
+    <!-- Section 2: Misión, Visión y Valores -->
+    <div class="container my-5">
+      <div class="row text-center">
+          <!-- Misión -->
+          <div class="col-md-4 mb-4">
+              <div class="card h-100" style="background-color: #FFDAC1;">
+                  <img src="https://res.cloudinary.com/worldpackers/image/upload/c_limit,f_auto,q_auto,w_1140/xumsrd8jigipeuiqqsao" class="card-img-top" alt="Misión" style="width: 100%; height: 200px; object-fit: cover;">
+                  <div class="card-body">
+                      <h5 class="card-title">Misión</h5>
+                      <p class="card-text">Brindar refugio, cuidado y amor a perros abandonados y maltratados, buscando encontrarles un hogar responsable y fomentar la adopción responsable.</p>
+                  </div>
+              </div>
+          </div>
+          <!-- Visión -->
+          <div class="col-md-4 mb-4">
+              <div class="card h-100" style="background-color: #FFDAC1;">
+                  <img src="https://res.cloudinary.com/worldpackers/image/upload/c_fill,f_jpg,h_600,q_auto,w_900/v1/guides/article_cover/wesauslaoz5kkprwrkjg" class="card-img-top" alt="Visión" style="width: 100%; height: 200px; object-fit: cover;">
+                  <div class="card-body">
+                      <h5 class="card-title">Visión</h5>
+                      <p class="card-text">Ser un referente en el cuidado animal, erradicando el abandono y promoviendo el bienestar de los perros en nuestra comunidad.</p>
+                  </div>
+              </div>
+          </div>
+          <!-- Valores -->
+          <div class="col-md-4 mb-4">
+              <div class="card h-100" style="background-color: #FFDAC1;">
+                  <img src="https://res.cloudinary.com/worldpackers/image/upload/c_limit,f_auto,q_auto,w_1140/ltz4ltdmopqeqexzuakl" class="card-img-top" alt="Valores" style="width: 100%; height: 200px; object-fit: cover;">
+                  <div class="card-body">
+                      <h5 class="card-title">Valores</h5>
+                      <ul class="list-unstyled">
+                          <li>Respeto a los animales</li>
+                          <li>Compromiso con el bienestar animal</li>
+                          <li>Responsabilidad social</li>
+                          <li>Transparencia</li>
+                          <li>Colaboración</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
       </div>
-  </div>
-  <div class="container mt-5">
-    <div class="card" style="width: 18rem;">
-        <img src="https://res.cloudinary.com/worldpackers/image/upload/c_fill,f_jpg,h_600,q_auto,w_900/v1/guides/article_cover/wesauslaoz5kkprwrkjg" class="card-img-top" alt="...">
-        <div class="card-body" style="background-color: rgb(190, 184, 152);">
-          <h5 class="card-title">Vision</h5>
-          <p class="card-text">Ser un referente en el cuidado animal, erradicando el abandono y promoviendo el bienestar de los perros en nuestra comunidad.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-  </div>
-  <div class="container mt-5">
-    <div class="card" style="width: 18rem;">
-        <img src="https://res.cloudinary.com/worldpackers/image/upload/c_limit,f_auto,q_auto,w_1140/ltz4ltdmopqeqexzuakl" class="card-img-top" alt="...">
-        <div class="card-body" style="background-color: rgb(190, 184, 152);">
-          <h5 class="card-title">Valores</h5>
-          <p class="card-text">Respeto a los animales</p>
-            <p>Compromiso con el bienestar animal</p>
-           <p>Responsabilidad social</p> 
-            <p>Transparencia</p>
-            <p>Colaboración</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-  </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
+<footer>
+    <hr style="border: 0px; height: 5px; background-color: #3f2d21;">
+</footer>
 </html>
