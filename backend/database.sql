@@ -43,6 +43,19 @@ CREATE TABLE IF NOT EXISTS Animales (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+-- Tabla de Citas
+CREATE TABLE IF NOT EXISTS Citas (
+    cita_id INT AUTO_INCREMENT PRIMARY KEY,
+    animal_id INT NOT NULL,
+    user_id INT NOT NULL,
+    fecha_cita TIMESTAMP NOT NULL,
+    motivo TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (animal_id) REFERENCES Animales(animal_id),
+    FOREIGN KEY (user_id) REFERENCES Usuarios(user_id)
+);
+
 -- Tabla de Adopciones
 CREATE TABLE IF NOT EXISTS Adopciones (
     adopcion_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -60,18 +73,6 @@ CREATE TABLE IF NOT EXISTS Adopciones (
     FOREIGN KEY (cita_id) REFERENCES Citas(cita_id) -- Llave foránea para citas
 );
 
--- Tabla de Citas
-CREATE TABLE IF NOT EXISTS Citas (
-    cita_id INT AUTO_INCREMENT PRIMARY KEY,
-    animal_id INT NOT NULL,
-    user_id INT NOT NULL,
-    fecha_cita TIMESTAMP NOT NULL,
-    motivo TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (animal_id) REFERENCES Animales(animal_id),
-    FOREIGN KEY (user_id) REFERENCES Usuarios(user_id)
-);
 
 CREATE TABLE IF NOT EXISTS Donaciones (
     donacion_id INT AUTO_INCREMENT PRIMARY KEY,
