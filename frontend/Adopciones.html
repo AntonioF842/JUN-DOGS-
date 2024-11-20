@@ -28,10 +28,10 @@
 
     <!-- Encabezado -->
     <header>
-        <div class="contenedorprin">
-            <h1>Pata a pata "Siempre"...</h1>
-            <p>Explora entre las mascotas que buscan un hogar y haz una diferencia en sus vidas y en la tuya.</p>
-            <a href="#mascotas" class="cta-button">Ver Mascotas</a>
+        <div class="contenedorprin text-center">
+            <h1 class="main-title">Pata a pata "Siempre"...</h1>
+            <p class="main-description">Explora entre las mascotas que buscan un hogar y haz una diferencia en sus vidas y en la tuya.</p>
+            <a href="#mascotas" class="cta-button btn btn-primary">Ver Mascotas</a>
         </div>
     </header>
 
@@ -47,7 +47,7 @@
                             <p class="card-text"><strong>Edad:</strong> 2 años</p>
                             <p class="card-text"><strong>Raza:</strong> Labrador</p>
                             <p>Botas era juguetón hasta que un carro le quitó ese brillo ;C.</p>
-                            <a href="#" class="btn btn-adopt">Adoptar</a>
+                            <a href="#" class="btn btn-adopt" data-bs-toggle="modal" data-bs-target="#modalBotas">Más Información</a>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                             <p class="card-text"><strong>Edad:</strong> 8 años</p>
                             <p class="card-text"><strong>Raza:</strong> Maltés</p>
                             <p>Un desmadre, pero un desmadre bonito :3.</p>
-                            <a href="#" class="btn btn-adopt">Adoptar</a>
+                            <a href="#" class="btn btn-adopt" data-bs-toggle="modal" data-bs-target="#modalLucky">Más Información</a>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                             <p class="card-text"><strong>Edad:</strong> 5 años</p>
                             <p class="card-text"><strong>Raza:</strong> Border Collie</p>
                             <p>Luna es muy activa y le encanta correr. ¡Es la compañera perfecta para aventuras!</p>
-                            <a href="#" class="btn btn-adopt">Adoptar</a>
+                            <a href="#" class="btn btn-adopt" data-bs-toggle="modal" data-bs-target="#modalLuna">Más Información</a>
                         </div>
                     </div>
                 </div>
@@ -87,10 +87,79 @@
         </div>
     </div>
 
+    <!-- Modal de Más Información sobre Botas -->
+    <div class="modal fade" id="modalBotas" tabindex="-1" aria-labelledby="modalBotasLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalBotasLabel">Más Información sobre Botas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="imagenes/imagen1.jpg" alt="Botas" class="img-fluid mb-3">
+                    <p><strong>Edad:</strong> 2 años</p>
+                    <p><strong>Raza:</strong> Labrador</p>
+                    <p>Botas es un perro muy amigable y cariñoso. A pesar de su accidente, sigue siendo muy afectuoso y necesita una familia que lo ame como es.</p>
+                    <p><strong>Historia:</strong> Botas fue rescatado tras un accidente automovilístico. Aunque ahora no es tan activo como antes, sigue teniendo un gran corazón.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Adoptar a Botas</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Más Información sobre Lucky -->
+    <div class="modal fade" id="modalLucky" tabindex="-1" aria-labelledby="modalLuckyLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLuckyLabel">Más Información sobre Lucky</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="imagenes/imagen2.jpg" alt="Lucky" class="img-fluid mb-3">
+                    <p><strong>Edad:</strong> 8 años</p>
+                    <p><strong>Raza:</strong> Maltés</p>
+                    <p>Lucky tiene una personalidad muy juguetona. A pesar de ser un poco travieso, es extremadamente leal y siempre quiere hacer sonreír a las personas que ama.</p>
+                    <p><strong>Historia:</strong> Lucky fue rescatado de una situación difícil y ahora está listo para dar amor y cariño a una familia que lo valore.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Adoptar a Lucky</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Más Información sobre Luna -->
+    <div class="modal fade" id="modalLuna" tabindex="-1" aria-labelledby="modalLunaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLunaLabel">Más Información sobre Luna</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="imagenes/imagen3.jpg" alt="Luna" class="img-fluid mb-3">
+                    <p><strong>Edad:</strong> 5 años</p>
+                    <p><strong>Raza:</strong> Border Collie</p>
+                    <p>Luna es muy enérgica y necesita una familia que le brinde actividades al aire libre. Ama correr y es perfecta para aquellos que disfrutan de una vida activa.</p>
+                    <p><strong>Historia:</strong> Luna fue entregada por una familia que no pudo proporcionarle el ejercicio que necesita. Ella está buscando un hogar lleno de aventuras.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Adoptar a Luna</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Sección de mascotas en adopción -->
     <main id="mascotas">
         <section class="anim-gallery">
-            <h2>Mascotas disponibles para adopción :3</h2>
+            <h2 class="gallery-title">Mascotas disponibles para adopción :3</h2>
             <div class="anim-tarj">
                 <img src="imagenes/imagen3.jpg" alt="Foto de Luna, una perrita labrador">
                 <h3>Botas</h3>
@@ -111,12 +180,9 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        var myCarousel = document.querySelector('#carouselExampleControls')
-        var carousel = new bootstrap.Carousel(myCarousel)
-    </script>
 </body>
 <footer>
     <hr class="divider">
+    <p class="footer-text">Junt-Dogs &copy; 2024 - Adopta un amigo hoy mismo. Todos los derechos reservados.</p>
 </footer>
 </html>
