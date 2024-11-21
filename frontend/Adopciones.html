@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopta una Mascota</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/adopciones.css">
+    <link rel="shortcut icon" href="imagenes/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <div class="navbar">
+        <img src="./imagenes/nav.png" alt="huellitas">
+        <h1><a href="Inicio.html" class="navbar-link">Junt-Dogs</a></h1>
+        <img src="./imagenes/nav.png" alt="huellitas">
+        <div class="links"> 
+            <a href="Adopciones.html">¿Cómo adoptar?</a>
+            <a href="Nosotros.html">¿Quiénes Somos?</a>
+            <a href="Testimonios.html">Testimonios</a>
+            <a href="Contacto.html">Contacto</a>
+            <button class="btn btn-light" onclick="window.location.href='InicioSesion.html'">Sign in</button>
+            <button class="btn btn-dark">Register</button>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Encabezado -->
+    <header>
+        <div class="contenedorprin text-center">
+            <h1 class="main-title">Pata a pata "Siempre"...</h1>
+            <p class="main-description">Explora entre las mascotas que buscan un hogar y haz una diferencia en sus vidas y en la tuya.</p>
+            <a href="#mascotas" class="cta-button btn btn-primary">Ver Mascotas</a>
+        </div>
+    </header>
+
+    <!-- Carrusel de tarjetas con datos de mascotas -->
+    <div class="carousel-container">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="card">
+                        <img src="imagenes/imagen1.jpg" class="card-img-top" alt="Botas">
+                        <div class="card-body">
+                            <h5 class="card-title">Botas</h5>
+                            <p class="card-text"><strong>Edad:</strong> 2 años</p>
+                            <p class="card-text"><strong>Raza:</strong> Labrador</p>
+                            <p>Botas era juguetón hasta que un carro le quitó ese brillo ;C.</p>
+                            <button class="btn btn-adopt" data-bs-toggle="modal" data-bs-target="#modalBotas">Más Información</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card">
+                        <img src="imagenes/imagen2.jpg" class="card-img-top" alt="Lucky">
+                        <div class="card-body">
+                            <h5 class="card-title">Lucky</h5>
+                            <p class="card-text"><strong>Edad:</strong> 8 años</p>
+                            <p class="card-text"><strong>Raza:</strong> Maltés</p>
+                            <p>Un desmadre, pero un desmadre bonito :3.</p>
+                            <button class="btn btn-adopt" data-bs-toggle="modal" data-bs-target="#modalLucky">Más Información</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card">
+                        <img src="imagenes/imagen3.jpg" class="card-img-top" alt="Luna">
+                        <div class="card-body">
+                            <h5 class="card-title">Luna</h5>
+                            <p class="card-text"><strong>Edad:</strong> 5 años</p>
+                            <p class="card-text"><strong>Raza:</strong> Border Collie</p>
+                            <p>Luna es muy activa y le encanta correr. ¡Es la compañera perfecta para aventuras!</p>
+                            <button class="btn btn-adopt" data-bs-toggle="modal" data-bs-target="#modalLuna">Más Información</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal para Botas -->
+    <div class="modal fade" id="modalBotas" tabindex="-1" aria-labelledby="modalBotasLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalBotasLabel">Solicitud de Adopción - Botas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+                <img src="imagenes/imagen1.jpg" class="img-fluid mb-3" alt="Botas">
+                <div class="pet-details">
+                    <p><strong>Edad:</strong> 2 años</p>
+                    <p><strong>Raza:</strong> Labrador</p>
+                    <p>Botas es un perro muy amigable y cariñoso. A pesar de su accidente, sigue siendo muy afectuoso y necesita una familia que lo ame como es.</p>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <form class="adoption-form" id="adoptionFormBotas">
+                    <input type="hidden" name="animal_id" value="1">
+                    <input type="hidden" name="cita_id" value="">
+                    
+                    <div class="form-group mb-3">
+                    <label for="fecha_inicial">Fecha de Inicio de Adopción</label>
+                    <input type="date" class="form-control" id="fecha_inicial" name="fecha_inicial" required>
+                    </div>
+    
+                    <div class="form-group mb-3">
+                    <label for="fecha_final">Fecha Final Estimada</label>
+                    <input type="date" class="form-control" id="fecha_final" name="fecha_final" required>
+                    </div>
+    
+                    <div class="form-group mb-3">
+                    <label for="estado_adopcion">Estado de la Adopción</label>
+                    <select class="form-control" id="estado_adopcion" name="estado_adopcion" required>
+                        <option value="pendiente">Pendiente</option>
+                        <option value="aprobada">Aprobada</option>
+                        <option value="rechazada">Rechazada</option>
+                    </select>
+                    </div>
+    
+                    <div class="form-group mb-3">
+                    <label for="comentarios">Comentarios Adicionales</label>
+                    <textarea class="form-control" id="comentarios" name="comentarios" rows="3"></textarea>
+                    </div>
+                </form>
+                </div>
+            </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" form="adoptionFormBotas" class="btn btn-primary">Enviar Solicitud</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+    S<!-- Modal para Lucky -->
+    <div class="modal fade" id="modalLucky" tabindex="-1" aria-labelledby="modalLuckyLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalLuckyLabel">Solicitud de Adopción - Lucky</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+                <img src="imagenes/imagen2.jpg" class="img-fluid mb-3" alt="Lucky">
+                <div class="pet-details">
+                    <p><strong>Edad:</strong> 8 años</p>
+                    <p><strong>Raza:</strong> Maltés</p>
+                    <p>Lucky tiene una personalidad muy juguetona. A pesar de ser un poco travieso, es extremadamente leal y siempre quiere hacer sonreír a las personas que ama.</p>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <form class="adoption-form" id="adoptionFormLucky">
+                    <input type="hidden" name="animal_id" value="2">
+                    <input type="hidden" name="cita_id" value="">
+                    
+                    <div class="form-group mb-3">
+                    <label for="fecha_inicial_lucky">Fecha de Inicio de Adopción</label>
+                    <input type="date" class="form-control" id="fecha_inicial_lucky" name="fecha_inicial" required>
+                    </div>
+    
+                    <div class="form-group mb-3">
+                    <label for="fecha_final_lucky">Fecha Final Estimada</label>
+                    <input type="date" class="form-control" id="fecha_final_lucky" name="fecha_final" required>
+                    </div>
+    
+                    <div class="form-group mb-3">
+                    <label for="estado_adopcion_lucky">Estado de la Adopción</label>
+                    <select class="form-control" id="estado_adopcion_lucky" name="estado_adopcion" required>
+                        <option value="pendiente">Pendiente</option>
+                        <option value="aprobada">Aprobada</option>
+                        <option value="rechazada">Rechazada</option>
+                    </select>
+                    </div>
+    
+                    <div class="form-group mb-3">
+                    <label for="comentarios_lucky">Comentarios Adicionales</label>
+                    <textarea class="form-control" id="comentarios_lucky" name="comentarios" rows="3"></textarea>
+                    </div>
+                </form>
+                </div>
+            </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" form="adoptionFormLucky" class="btn btn-primary">Enviar Solicitud</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+    <!-- Modal para Luna -->
+    <div class="modal fade" id="modalLuna" tabindex="-1" aria-labelledby="modalLunaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalLunaLabel">Solicitud de Adopción - Luna</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+                <img src="imagenes/imagen3.jpg" class="img-fluid mb-3" alt="Luna">
+                <div class="pet-details">
+                    <p><strong>Edad:</strong> 5 años</p>
+                    <p><strong>Raza:</strong> Border Collie</p>
+                    <p>Luna es muy enérgica y necesita una familia que le brinde actividades al aire libre. Ama correr y es perfecta para aquellos que disfrutan de una vida activa.</p>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <form class="adoption-form" id="adoptionFormLuna">
+                    <input type="hidden" name="animal_id" value="3">
+                    <input type="hidden" name="cita_id" value="">
+                    
+                    <div class="form-group mb-3">
+                    <label for="fecha_inicial_luna">Fecha de Inicio de Adopción</label>
+                    <input type="date" class="form-control" id="fecha_inicial_luna" name="fecha_inicial" required>
+                    </div>
+    
+                    <div class="form-group mb-3">
+                    <label for="fecha_final_luna">Fecha Final Estimada</label>
+                    <input type="date" class="form-control" id="fecha_final_luna" name="fecha_final" required>
+                    </div>
+    
+                    <div class="form-group mb-3">
+                    <label for="estado_adopcion_luna">Estado de la Adopción</label>
+                    <select class="form-control" id="estado_adopcion_luna" name="estado_adopcion" required>
+                        <option value="pendiente">Pendiente</option>
+                        <option value="aprobada">Aprobada</option>
+                        <option value="rechazada">Rechazada</option>
+                    </select>
+                    </div>
+    
+                    <div class="form-group mb-3">
+                    <label for="comentarios_luna">Comentarios Adicionales</label>
+                    <textarea class="form-control" id="comentarios_luna" name="comentarios" rows="3"></textarea>
+                    </div>
+                </form>
+                </div>
+            </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" form="adoptionFormLuna" class="btn btn-primary">Enviar Solicitud</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <body>
+        <!-- Sección de mascotas en adopción -->
+        <main id="mascotas">
+            <section class="anim-gallery">
+                <h2 class="gallery-title">Mascotas disponibles para adopción :3</h2>
+                <div class="anim-tarj">
+                    <img src="imagenes/imagen1.jpg" alt="Foto de Luna, una perrita labrador">
+                    <h3>Botas</h3>
+                    <p><strong>Edad:</strong> 2 años</p>
+                    <p><strong>Raza:</strong> Labrador</p>
+                    <p class="descripcion">Botas era juguetón hasta que un carro le quitó ese brillo ;C.</p>
+                    <button class="adopt-button btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalBotas">Adoptar</button>
+                </div>
+                <div class="anim-tarj">
+                    <img src="imagenes/imagen2.jpg" alt="Foto de Max, un perro bulldog">
+                    <h3>Lucky</h3>
+                    <p><strong>Edad:</strong> 8 años</p>
+                    <p><strong>Raza:</strong> Maltés</p>
+                    <p class="descripcion">Un desmadre, pero un desmadre bonito :3.</p>
+                    <button class="adopt-button btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalLucky">Adoptar</button>
+                </div>
+            </section>
+        </main>
+    
+        <!-- Modal para Botas -->
+        <div class="modal fade" id="modalBotas" tabindex="-1" aria-labelledby="modalBotasLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalBotasLabel">Formulario de Adopción - Botas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="adoptionFormBotas">
+                            <div class="mb-3">
+                                <label for="nameBotas" class="form-label">Nombre Completo</label>
+                                <input type="text" class="form-control" id="nameBotas" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="emailBotas" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="emailBotas" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phoneBotas" class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control" id="phoneBotas" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="addressBotas" class="form-label">Dirección</label>
+                                <textarea class="form-control" id="addressBotas" rows="3" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="messageBotas" class="form-label">¿Por qué quieres adoptar a Botas?</label>
+                                <textarea class="form-control" id="messageBotas" rows="4" required></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" form="adoptionFormBotas" class="btn btn-primary">Enviar Solicitud</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Modal para Lucky -->
+        <div class="modal fade" id="modalLucky" tabindex="-1" aria-labelledby="modalLuckyLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLuckyLabel">Formulario de Adopción - Lucky</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="adoptionFormLucky">
+                            <div class="mb-3">
+                                <label for="nameLucky" class="form-label">Nombre Completo</label>
+                                <input type="text" class="form-control" id="nameLucky" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="emailLucky" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="emailLucky" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phoneLucky" class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control" id="phoneLucky" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="addressLucky" class="form-label">Dirección</label>
+                                <textarea class="form-control" id="addressLucky" rows="3" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="messageLucky" class="form-label">¿Por qué quieres adoptar a Lucky?</label>
+                                <textarea class="form-control" id="messageLucky" rows="4" required></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" form="adoptionFormLucky" class="btn btn-primary">Enviar Solicitud</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <footer>
+            <hr class="divider">
+            <p class="footer-text">Junt-Dogs &copy; 2024 - Adopta un amigo hoy mismo. Todos los derechos reservados.</p>
+        </footer>
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
