@@ -7,7 +7,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const password = document.getElementById('password').value;
 
     // Send a POST request to the login.php script with the email and password
-    fetch('../backend/login.php', {
+    fetch('http://localhost/JUN-DOGS-/backend/login.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

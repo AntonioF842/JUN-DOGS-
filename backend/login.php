@@ -1,6 +1,9 @@
 <?php
 session_start();
 header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
 // Incluir el archivo de conexión a la base de datos
 include '../backend/config/conexion.php';
@@ -25,7 +28,7 @@ if ($stmt->num_rows > 0) {
     $stmt->bind_result($user_id, $nombre, $apellido_paterno, $apellido_materno, $email, $password_db);
     $stmt->fetch();
     // Verificar la contraseña
-    if($password=== $password_db) {
+    if ($password === $password_db) {
         // Almacenar la información del usuario en la sesión
         $_SESSION['user_id'] = $user_id;
         $_SESSION['nombre'] = $nombre;
