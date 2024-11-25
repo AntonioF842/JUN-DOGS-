@@ -28,36 +28,52 @@
     <div class="container mt-5">
         <h2 class="text-center">Registro</h2>
         <div class="register-container">
-            <form id="registerForm">
+            <form id="registerForm" action="../backend/registro.php" method="POST">
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" required>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
                 </div>
                 <div class="mb-3">
                     <label for="apellido_paterno" class="form-label">Apellido Paterno</label>
-                    <input type="text" class="form-control" id="apellido_paterno" required>
+                    <input type="text" class="form-control" id="apellido_paterno" name="apellido_paterno" required>
                 </div>
                 <div class="mb-3">
                     <label for="apellido_materno" class="form-label">Apellido Materno</label>
-                    <input type="text" class="form-control" id="apellido_materno" required>
+                    <input type="text" class="form-control" id="apellido_materno" name="apellido_materno">
+                </div>
+                <div class="mb-3">
+                    <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento">
+                </div>
+                <div class="mb-3">
+                    <label for="direccion" class="form-label">Dirección</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion">
+                </div>
+                <div class="mb-3">
+                    <label for="sexo" class="form-label">Sexo</label>
+                    <select class="form-control" id="sexo" name="sexo">
+                        <option value="">Seleccionar</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Otro">Otro</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" required>
+                    <input type="email" class="form-control" id="email" name="email" required>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" required>
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
                 </div>
                 <button type="submit" class="btn btn-dark">Registrarse</button>
-            </form>
+            </form>            
             <div id="registerMessage" class="mt-3 text-center"></div>
         </div>
     </div>
     
     <hr style="border: 0px; height: 5px; background-color: #3f2d21;">
     
-    <script src="../js/register.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html> 

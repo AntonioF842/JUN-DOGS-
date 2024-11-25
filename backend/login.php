@@ -1,56 +1,52 @@
 <?php
-session_start();
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Authorization');
+session_start(); // Iniciar sesión para almacenar información del usuario
 
-// Incluir el archivo de conexión a la base de datos
-include '../backend/config/conexion.php';
+require_once 'config/database.php'; // Incluir la configuración de la base de datos
 
-// Eliminar cualquier salida previa
-ob_start();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Capturar datos del formulario
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-// Obtener los datos del POST
-$data = json_decode(file_get_contents('php://input'), true);
-$email = $data['email'];
-$password = $data['password'];
+    // Crear una instancia de la conexión a la base de datos
+    $database = new Database();
+    $conn = $database->getConnection();
 
-// Preparar la consulta SQL
-$sql = "SELECT user_id, nombre, apellido_paterno, apellido_materno, email, password_hash FROM Usuarios WHERE email = ?";
-$stmt = $conexion->prepare($sql);
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$stmt->store_result();
+    if ($conn) {
+        try {
+            // Consulta para obtener el usuario por email
+            $sql = "SELECT user_id, nombre, contraseña FROM usuarios WHERE email = :email";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $usuarioData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Verificar si el usuario existe
-if ($stmt->num_rows > 0) {
-    $stmt->bind_result($user_id, $nombre, $apellido_paterno, $apellido_materno, $email, $password_db);
-    $stmt->fetch();
-    // Verificar la contraseña
-    if ($password === $password_db) {
-        // Almacenar la información del usuario en la sesión
-        $_SESSION['user_id'] = $user_id;
-        $_SESSION['nombre'] = $nombre;
-        $_SESSION['apellido_paterno'] = $apellido_paterno;
-        $_SESSION['apellido_materno'] = $apellido_materno;
-        $_SESSION['email'] = $email;
-        
-        $response = ['success' => true, 'user_id' => $user_id, 'nombre' => $nombre];
+            if ($usuarioData && password_verify($password, $usuarioData['contraseña'])) {
+                // Credenciales válidas, guardar información en la sesión
+                $_SESSION['user_id'] = $usuarioData['user_id'];
+                $_SESSION['nombre'] = $usuarioData['nombre'];
+
+                // Redirigir a la página de adopciones
+                header("Location: ../frontend/Adopciones.html");
+                exit;
+            } else {
+                // Credenciales inválidas
+                $_SESSION['error'] = "Usuario o contraseña incorrectos.";
+                header("Location: ../frontend/InicioSesion.html");
+                exit;
+            }
+        } catch (PDOException $e) {
+            // Manejar errores de la base de datos
+            echo "Error en la base de datos: " . $e->getMessage();
+        }
     } else {
-        $response = ['success' => false, 'message' => 'Invalid password'];
+        // Error en la conexión a la base de datos
+        echo "No se pudo conectar a la base de datos.";
     }
 } else {
-    $response = ['success' => false, 'message' => 'User not found'];
+    // Método no permitido
+    $_SESSION['error'] = "Método no permitido.";
+    header("Location: ../frontend/InicioSesion.html");
+    exit;
 }
-
-// Cerrar la conexión
-$stmt->close();
-$conexion->close();
-
-// Limpiar cualquier salida previa
-ob_end_clean();
-
-// Enviar la respuesta JSON
-echo json_encode($response);
 ?>
