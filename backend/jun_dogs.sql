@@ -180,3 +180,10 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+INSERT INTO `animales` (`animal_id`, `nombre`, `tipo_animal`, `tamaño`, `foto_url`, `descripcion`, `vacunas`, `estado_adopcion`)
+VALUES
+(NULL, 'Max', 'Perro', 'Grande', 'https://www.ngenespanol.com/wp-content/uploads/2024/03/estos-son-los-animales-que-no-deberias-tener-como-mascotas.jpg', 'Un perro amistoso y juguetón que ama correr en el parque.', 'Rabia, Parvovirus', 'Disponible'),
+(NULL, 'Mia', 'Gato', 'Pequeño', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5IsWeGH1zA3ZHMEHRLkiRCRUc4q7PzZwRsg&s', 'Una gata tranquila que disfruta dormir al sol.', 'Leucemia Felina, Rabia', 'Disponible'),
+(NULL, 'Rocky', 'Perro', 'Mediano', 'https://images.pexels.com/photos/47547/squirrel-animal-cute-rodents-47547.jpeg?cs=srgb&dl=pexels-pixabay-47547.jpg&fm=jpg', 'Perro rescatado, valiente y leal, ideal para una familia activa.', 'Rabia, Moquillo', 'Disponible'),
+(NULL, 'Luna', 'Otro', 'Pequeño', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaBkz0geqhCevYfegYusMwyJjsV_3Tthrq3w&s', 'Conejita blanca y suave, perfecta como mascota de interior.', 'Mixomatosis', 'Disponible');
