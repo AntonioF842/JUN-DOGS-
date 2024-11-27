@@ -413,3 +413,89 @@ body {
         width: 100%;
     }
 }
+
+/* Nuevo contenedor flexible para la sección principal */
+.content-wrapper {
+    display: flex;
+    background-color: #FFDAC1;
+    min-height: calc(100vh - 200px); /* Ajusta según el tamaño de tu navbar */
+}
+
+/* Estilos para la barra lateral de filtros */
+.filter-sidebar {
+    width: 280px;
+    background-color: #FFF;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    height: 100%;
+    border-radius: 0 15px 15px 0;
+}
+
+.filter-sidebar h3 {
+    color: #D46A6A;
+    font-family: "Itim", cursive;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group label {
+    display: block;
+    color: #3f2d21;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.filter-group select,
+.filter-group input[type="range"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #555;
+}
+
+.filter-group input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.filter-btn {
+    background-color: #D46A6A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.filter-btn:hover {
+    background-color: #B95353;
+}
+
+/* Ajuste del contenedor principal de mascotas */
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    .filter-sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+        border-radius: 0 0 15px 15px;
+    }
+}

@@ -63,10 +63,50 @@
         <!-- Dynamic modals will be inserted here -->
     </div>
 
-    <!-- Sección de mascotas en adopción -->
-    <main id="mascotas">
-        <!-- Dynamic content will be inserted here -->
-    </main>
+    <!-- Nuevo contenedor flexible -->
+    <div class="content-wrapper">
+        <!-- Barra lateral de filtros -->
+        <aside class="filter-sidebar">
+            <h3>Filtrar Mascotas</h3>
+            
+            <div class="filter-group">
+                <label for="tipo-animal">Tipo de Animal</label>
+                <select id="tipo-animal" class="form-control">
+                    <option value="">Todos</option>
+                    <option value="Perro">Perros</option>
+                    <option value="Gato">Gatos</option>
+                    <option value="Otro">Otros</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="tamaño">Tamaño</label>
+                <select id="tamaño" class="form-control">
+                    <option value="">Todos</option>
+                    <option value="Pequeño">Pequeño</option>
+                    <option value="Mediano">Mediano</option>
+                    <option value="Grande">Grande</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Estado de Vacunación</label>
+                <div>
+                    <input type="checkbox" id="vacunado" checked>
+                    <label for="vacunado">Vacunados</label>
+                </div>
+            </div>
+
+            <button class="filter-btn" onclick="aplicarFiltros()">Aplicar Filtros</button>
+        </aside>
+
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <main id="mascotas">
+                <!-- El contenido dinámico se insertará aquí -->
+            </main>
+        </div>
+    </div>
 
     <footer>
         <hr class="divider">

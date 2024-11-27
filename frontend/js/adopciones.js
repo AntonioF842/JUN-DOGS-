@@ -1,7 +1,16 @@
 document.addEventListener("DOMContentLoaded", function() {
+    loadAndDisplayPets();
+});
+
+function loadAndDisplayPets(filters = {}) {
     fetch('../backend/adopciones.php')
         .then(response => response.json())
         .then(data => {
+            // Apply filters if they exist
+            const filteredData = filters && Object.keys(filters).length > 0 
+                ? filterPets(data, filters) 
+                : data;
+            
             const carouselInner = document.getElementById('carousel-inner');
             const modalsContainer = document.getElementById('modals-container');
             const mascotasSection = document.getElementById('mascotas');
@@ -11,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const animGallery = mascotasSection.querySelector('.anim-gallery');
 
-            data.forEach((animal, index) => {
+            filteredData.forEach((animal, index) => {
                 // Carousel item
                 const carouselItem = document.createElement('div');
                 carouselItem.className = `carousel-item ${index === 0 ? 'active' : ''}`;
@@ -20,8 +29,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         <img src="${animal.foto_url}" class="card-img-top" alt="${animal.nombre}">
                         <div class="card-body">
                             <h5 class="card-title">${animal.nombre}</h5>
-                            <p class="card-text"><strong>Edad:</strong> ${animal.edad} años</p>
-                            <p class="card-text"><strong>Raza:</strong> ${animal.raza}</p>
+                            <p class="card-text"><strong>Tipo:</strong> ${animal.tipo_animal}</p>
+                            <p class="card-text"><strong>Tamaño:</strong> ${animal.tamaño}</p>
                             <p>${animal.descripcion}</p>
                             <button class="btn btn-adopt" data-bs-toggle="modal" data-bs-target="#modal${animal.animal_id}">Más Información</button>
                         </div>
@@ -48,8 +57,8 @@ document.addEventListener("DOMContentLoaded", function() {
                                     <div class="col-md-6">
                                         <img src="${animal.foto_url}" class="img-fluid mb-3" alt="${animal.nombre}">
                                         <div class="pet-details">
-                                            <p><strong>Edad:</strong> ${animal.edad} años</p>
-                                            <p><strong>Raza:</strong> ${animal.raza}</p>
+                                            <p><strong>Tipo:</strong> ${animal.tipo_animal}</p>
+                                            <p><strong>Tamaño:</strong> ${animal.tamaño}</p>
                                             <p>${animal.descripcion}</p>
                                         </div>
                                     </div>
@@ -95,8 +104,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 animalCard.innerHTML = `
                     <img src="${animal.foto_url}" alt="Foto de ${animal.nombre}">
                     <h3>${animal.nombre}</h3>
-                    <p><strong>Edad:</strong> ${animal.edad} años</p>
-                    <p><strong>Raza:</strong> ${animal.raza}</p>
+                    <p><strong>Tipo:</strong> ${animal.tipo_animal}</p>
+                    <p><strong>Tamaño:</strong> ${animal.tamaño}</p>
                     <p class="descripcion">${animal.descripcion}</p>
                     <button class="adopt-button btn btn-dark" data-bs-toggle="modal" data-bs-target="#modal${animal.animal_id}">Adoptar</button>
                 `;
@@ -104,4 +113,34 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         })
         .catch(error => console.error('Error fetching adoption data:', error));
-});
+}
+
+function filterPets(pets, filters) {
+    return pets.filter(pet => {
+        let meetsFilters = true;
+
+        if (filters.tipoAnimal && filters.tipoAnimal !== '') {
+            meetsFilters = meetsFilters && pet.tipo_animal === filters.tipoAnimal;
+        }
+
+        if (filters.tamaño && filters.tamaño !== '') {
+            meetsFilters = meetsFilters && pet.tamaño === filters.tamaño;
+        }
+
+        if (filters.vacunado) {
+            meetsFilters = meetsFilters && pet.vacunas && pet.vacunas.length > 0;
+        }
+
+        return meetsFilters;
+    });
+}
+
+function aplicarFiltros() {
+    const filters = {
+        tipoAnimal: document.getElementById('tipo-animal').value,
+        tamaño: document.getElementById('tamaño').value,
+        vacunado: document.getElementById('vacunado').checked
+    };
+    
+    loadAndDisplayPets(filters);
+}
