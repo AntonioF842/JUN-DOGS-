@@ -1,9 +1,24 @@
-
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
     header("Location: InicioSesion.html");
     exit;
+}
+
+require_once '../backend/config/database.php';
+$database = new Database();
+$conn = $database->getConnection();
+$mascotas = [];
+
+if ($conn) {
+    try {
+        $sql = "SELECT nombre FROM animales WHERE estado_adopcion = 'Disponible'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $mascotas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Error en la base de datos: " . $e->getMessage();
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -26,8 +41,8 @@ if (!isset($_SESSION['user_id'])) {
             <a href="Nosotros.html">¿Quiénes Somos?</a>
             <a href="Testimonios.html">Testimonios</a>
             <a href="Contacto.html">Contacto</a>
-            <button class="btn btn-light" onclick="window.location.href='InicioSesion.html'">Sign in</button>
-            <button class="btn btn-dark">Register</button>
+            <button class="btn btn-light" onclick="window.location.href='InicioSesion.html'">Iniciar sesión</button>
+            <button class="btn btn-dark">Registro</button>
         </div>
     </div>
 
@@ -38,7 +53,8 @@ if (!isset($_SESSION['user_id'])) {
         <section id="nueva-cita">
             <h2 class="text-center" style="color: #D46A6A; font-family: 'Itim', cursive;">Agendar Nueva Cita</h2>
             <p class="text-center">Completa el formulario para programar tu cita</p>
-            <form action="procesar_cita.php" method="post" class="table-container">
+            <form action="../backend/registrar_cita.php" method="post" class="table-container">
+                <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
                 <table class="table">
                     <thead>
                         <tr>
@@ -47,14 +63,6 @@ if (!isset($_SESSION['user_id'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Nombre Completo</td>
-                            <td><input type="text" class="form-control" placeholder="Escribe tu nombre" name="nombre" required></td>
-                        </tr>
-                        <tr>
-                            <td>Correo Electrónico</td>
-                            <td><input type="email" class="form-control" placeholder="ejemplo@correo.com" name="correo" required></td>
-                        </tr>
                         <tr>
                             <td>Fecha de la Cita</td>
                             <td><input type="date" class="form-control" name="fecha" required></td>
@@ -68,10 +76,9 @@ if (!isset($_SESSION['user_id'])) {
                             <td>
                                 <select class="form-select" name="mascota" required>
                                     <option value="" disabled selected>Selecciona una mascota</option>
-                                    <option value="Luna">Luna</option>
-                                    <option value="Max">Max</option>
-                                    <option value="Bella">Bella</option>
-                                    <option value="Rocky">Rocky</option>
+                                    <?php foreach ($mascotas as $mascota): ?>
+                                        <option value="<?php echo $mascota['nombre']; ?>"><?php echo $mascota['nombre']; ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </td>
                         </tr>
