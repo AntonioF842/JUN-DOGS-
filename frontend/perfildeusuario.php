@@ -23,6 +23,7 @@ if ($conn) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,13 +31,14 @@ if ($conn) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../frontend/css/perfildeusuario.css">
 </head>
+
 <body>
     <!-- Barra de navegacion -->
     <div class="navbar">
         <img src="./imagenes/nav.png" alt="huellitas">
         <h1><a href="Inicio.html" class="navbar-link">Junt-Dogs</a></h1>
         <img src="./imagenes/nav.png" alt="huellitas">
-        <div class="links"> 
+        <div class="links">
             <a href="Adopciones.html">¿Cómo adoptar?</a>
             <a href="Nosotros.html">¿Quiénes Somos?</a>
             <a href="Testimonios.html">Testimonios</a>
@@ -81,6 +83,9 @@ if ($conn) {
                                     <?php endforeach; ?>
                                 </select>
                             </td>
+                        <tr>
+                            <td>Motivo</td>
+                            <td><input type="text" class="form-control" name="motivo" required></td>
                         </tr>
                     </tbody>
                 </table>
@@ -173,7 +178,7 @@ if ($conn) {
     <div class="logout-container">
         <button class="btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
     </div>
-    
+
     <script>
         function cerrarSesion() {
             // ciere de sesion
@@ -181,27 +186,28 @@ if ($conn) {
             window.location.href = "InicioSesion.html"; // Redireccion pagina de inicio
         }
     </script>
-   <div class="sidebar-profile">
-    <img src="imagenes/imagen2.jpg" alt="Avatar de usuario" class="profile-avatar">
-    <ul class="sidebar-links">
-        <li><a href="#mi-perfil">Mi Perfil</a></li>
-        <li><a href="#configuracion">Configuración</a></li>
-        <li><a href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
-    </ul>
-</div>
-<div class="profile-info">
-    <h2>Bienvenido, <?php echo $_SESSION['nombre']; ?></h2>
-    <p>Apellido Paterno: <?php echo $_SESSION['apellido_paterno']; ?></p>
-    <p>Apellido Materno: <?php echo $_SESSION['apellido_materno']; ?></p>
-    <p>Dirección: <?php echo $_SESSION['direccion']; ?></p>
-    <p>Email: <?php echo $_SESSION['email']; ?></p>
-</div>
-<script>
-    function cerrarSesion() {
-        // Cierre de sesion
-        alert("Sesión cerrada exitosamente.");
-        window.location.href = "InicioSesion.html"; 
-    }
-</script>
+    <div class="sidebar-profile">
+        <img src="imagenes/imagen2.jpg" alt="Avatar de usuario" class="profile-avatar">
+        <ul class="sidebar-links">
+            <li><a href="#mi-perfil">Mi Perfil</a></li>
+            <li><a href="#configuracion">Configuración</a></li>
+            <li><a href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+    <div class="profile-info">
+        <h2>Bienvenido, <?php echo $_SESSION['nombre']; ?></h2>
+        <p>Apellido Paterno: <?php echo $_SESSION['apellido_paterno']; ?></p>
+        <p>Apellido Materno: <?php echo $_SESSION['apellido_materno']; ?></p>
+        <p>Dirección: <?php echo $_SESSION['direccion']; ?></p>
+        <p>Email: <?php echo $_SESSION['email']; ?></p>
+    </div>
+    <script>
+        function cerrarSesion() {
+            // Cierre de sesion
+            alert("Sesión cerrada exitosamente.");
+            window.location.href = "InicioSesion.html";
+        }
+    </script>
 </body>
+
 </html>
