@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['email'] = $usuarioData['email'];
 
               
-                header("Location: ../frontend/perfildeusuario.html");
+                header("Location: ../frontend/perfildeusuario.php");
                 exit;
             } else {
               
