@@ -1,6 +1,7 @@
 <?php
 class Database {
     private $host = "localhost";
+    private $port = "8889";  // Agregar el puerto 8889
     private $db_name = "jun_dogs";
     private $username = "root";
     private $password = "root";
@@ -10,7 +11,8 @@ class Database {
         $this->conn = null;
 
         try {
-            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            // Usar el puerto en la cadena de conexión PDO
+            $this->conn = new PDO("mysql:host=" . $this->host . ";port=" . $this->port . ";dbname=" . $this->db_name, $this->username, $this->password);
             $this->conn->exec("set names utf8");
         } catch (PDOException $exception) {
             // Log the error instead of echoing it
@@ -20,5 +22,6 @@ class Database {
         return $this->conn;
     }
 }
+
 ?>
 

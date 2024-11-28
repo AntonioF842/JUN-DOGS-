@@ -1,0 +1,94 @@
+/* Color de fondo general para la página */
+.bg-primary {
+    --bs-bg-opacity: 1;
+    background-color: #ffcfb3 !important;
+}
+
+.bg-warning {
+    --bs-bg-opacity: 1;
+    background-color: #e7a985 !important;
+}
+
+.bg-success {
+    --bs-bg-opacity: 1;
+    background-color: #e7a985 !important;
+}
+
+.bg-info {
+    --bs-bg-opacity: 1;
+    background-color: #e7a985 !important;
+} 
+
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #6b7380;
+    --bs-btn-border-color: #0d6efd;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #0b5ed7;
+    --bs-btn-hover-border-color: #0a58ca;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #0a58ca;
+    --bs-btn-active-border-color: #0a53be;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #0d6efd;
+    --bs-btn-disabled-border-color: #0d6efd;
+}
+
+.table th {
+    background-color: #533f32;
+    color: white;
+}
+
+body {
+    background-color: #fff5cd; 
+}
+
+/* Color de fondo para el encabezado de las tarjetas */
+.card-header {
+    background-color: #ffffff; 
+    color: white;
+}
+
+/* Color de fondo para las tablas */
+.table {
+    background-color: #ffffff; /* Fondo blanco para las tablas */
+}
+
+/* Cambiar color de fila en las tablas */
+.table th {
+    background-color: #FFCFB3; /* Fondo azul para las cabeceras */
+    color: white;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color suave para las filas pares */
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #e6f7ff; /* Color suave para las filas impares */
+}
+
+/* Colores de las filas cuando se pasa el mouse sobre ellas */
+.table tbody tr:hover {
+    background-color: #cce5ff; /* Color al pasar el mouse */
+}
+
+/* Botones personalizados */
+.btn-success {
+    background-color: #28a745; /* Verde */
+    border-color: #28a745;
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Rojo */
+    border-color: #dc3545;
+}
+
+/* Color para las tarjetas principales */
+.card {
+    background-color: #ffffff;  /* Fondo blanco para las tarjetas */
+    border: 1px solid #fff5cd; /* Borde azul */
+}
+
