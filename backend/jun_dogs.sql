@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `jun_dogs`
+CREATE DATABASE IF NOT EXISTS `jun_dogs` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `jun_dogs`;
 --
 
 -- --------------------------------------------------------
@@ -83,14 +85,14 @@ CREATE TABLE `usuarios` (
   `direccion` varchar(100) DEFAULT NULL,
   `sexo` enum('Masculino','Femenino','Otro') DEFAULT NULL,
   `email` varchar(100) NOT NULL,
-  `contraseña` varchar(255) NOT NULL
+  `contrasena` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`user_id`, `nombre`, `apellido_paterno`, `apellido_materno`, `fecha_nacimiento`, `direccion`, `sexo`, `email`, `contraseña`) VALUES
+INSERT INTO `usuarios` (`user_id`, `nombre`, `apellido_paterno`, `apellido_materno`, `fecha_nacimiento`, `direccion`, `sexo`, `email`, `contrasena`) VALUES
 (1, 'judith', 'guzman', 'cortez', '2002-05-25', 'madero 234', 'Femenino', 'judith@judith.com', 'judith123');
 
 --

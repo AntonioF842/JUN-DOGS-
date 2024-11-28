@@ -15,19 +15,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($conn) {
         try {
            
-            $sql = "SELECT user_id, nombre, contraseña FROM usuarios WHERE email = :email";
+            $sql = "SELECT user_id, nombre, apellido_paterno, apellido_materno, direccion, email, contrasena FROM usuarios WHERE email = :email";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':email', $email);
             $stmt->execute();
             $usuarioData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($usuarioData && password_verify($password, $usuarioData['contraseña'])) {
+            if ($usuarioData && ($password === $usuarioData['contrasena'])) {
                 
                 $_SESSION['user_id'] = $usuarioData['user_id'];
                 $_SESSION['nombre'] = $usuarioData['nombre'];
+                $_SESSION['apellido_paterno'] = $usuarioData['apellido_paterno']; 
+                $_SESSION['apellido_materno'] = $usuarioData['apellido_materno']; 
+                $_SESSION['direccion'] = $usuarioData['direccion'];
+                $_SESSION['email'] = $usuarioData['email'];
 
               
-                header("Location: ../frontend/Adopciones.html");
+                header("Location: ../frontend/perfildeusuario.html");
                 exit;
             } else {
               
