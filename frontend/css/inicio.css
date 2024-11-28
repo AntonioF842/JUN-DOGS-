@@ -57,6 +57,18 @@ body {
     font-size: 20px;
 }
 
+/* Estilo para el enlace del nombre Junt-Dogs */
+.navbar-link {
+    color: #000;
+    text-decoration: none;
+    font-size: 2rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+    color: #3f2d21;
+}
+
 /* Carrusel */
 .carousel-inner {
     width: 80%; /* Limita el ancho del carrusel a un 80% del contenedor */
@@ -74,6 +86,28 @@ body {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Estilos para las tarjetas de testimonios */
+.card {
+    transition: transform 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Estilos para el formulario de contacto */
+.form-control:focus {
+    border-color: #3f2d21;
+    box-shadow: 0 0 0 0.2rem rgba(63, 45, 33, 0.25);
+}
+
 /* Ajustes responsivos */
 @media (max-width: 1200px) {
     .carousel-item img {
@@ -82,8 +116,20 @@ body {
 }
 
 @media (max-width: 768px) {
+    .navbar h1 {
+        font-size: 30px;
+    }
     .carousel-item img {
         height: 200px; /* Ajusta la altura en pantallas pequeñas */
+    }
+    .links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .links button {
+        margin-top: 0.5rem;
     }
 }
 
@@ -130,9 +176,6 @@ body {
 
 /* Ajustes para dispositivos móviles */
 @media (max-width: 768px) {
-    .navbar h1 {
-        font-size: 30px;
-    }
     .eventos h2 {
         font-size: 2em;
     }
