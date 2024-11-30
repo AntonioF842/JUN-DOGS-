@@ -81,8 +81,10 @@ function fetchAppointments() {
     fetch('../backend/citas.php')
         .then(response => response.json())
         .then(data => {
-            const tableBody = document.getElementById('appointmentTableBody');
-            tableBody.innerHTML = '';
+            const pendingTableBody = document.getElementById('appointmentTableBody');
+            const upcomingTableBody = document.getElementById('upcomingAppointmentTableBody');
+            pendingTableBody.innerHTML = '';
+            upcomingTableBody.innerHTML = '';
             data.forEach(cita => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -93,13 +95,19 @@ function fetchAppointments() {
                     <td><img src="${cita.foto_url}" alt="${cita.nombre_mascota}" width="50"></td>
                     <td>${new Date(cita.fecha_cita).toLocaleDateString()}</td>
                     <td>${new Date(cita.fecha_cita).toLocaleTimeString()}</td>
-                    <td>${cita.estado_cita}</td>
-                    <td>
-                        <button class="btn btn-success btn-sm" onclick="updateAppointmentStatus(${cita.cita_id}, 'Aprobada')">Aprobar</button>
-                        <button class="btn btn-danger btn-sm" onclick="updateAppointmentStatus(${cita.cita_id}, 'Rechazada')">Rechazar</button>
-                    </td>
                 `;
-                tableBody.appendChild(row);
+                if (cita.estado_cita === 'Pendiente') {
+                    row.innerHTML += `
+                        <td>${cita.estado_cita}</td>
+                        <td>
+                            <button class="btn btn-success btn-sm" onclick="updateAppointmentStatus(${cita.cita_id}, 'Aprobada')">Aprobar</button>
+                            <button class="btn btn-danger btn-sm" onclick="updateAppointmentStatus(${cita.cita_id}, 'Rechazada')">Rechazar</button>
+                        </td>
+                    `;
+                    pendingTableBody.appendChild(row);
+                } else if (cita.estado_cita === 'Aprobada') {
+                    upcomingTableBody.appendChild(row);
+                }
             });
         });
 }

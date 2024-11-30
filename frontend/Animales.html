@@ -116,7 +116,7 @@
     <div class="container mt-5">
         <h2 class="text-center">Gestión de Citas</h2>
         <div class="appointment-list mt-5">
-            <h3 class="text-center">Lista de Citas</h3>
+            <h3 class="text-center">Citas pendientes</h3>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -132,6 +132,26 @@
                     </tr>
                 </thead>
                 <tbody id="appointmentTableBody">
+                    <!-- Rows will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="appointment-list mt-5">
+            <h3 class="text-center">Citas próximas</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre Usuario</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Nombre Mascota</th>
+                        <th>Imagen Mascota</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                    </tr>
+                </thead>
+                <tbody id="upcomingAppointmentTableBody">
                     <!-- Rows will be populated by JavaScript -->
                 </tbody>
             </table>
