@@ -21,7 +21,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute();
             $usuarioData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($usuarioData && ($password === $usuarioData['contrasena'])) {
+            // Verificamos si el usuario es el administrador con sus credenciales
+            if ($email === 'adminJunDogs@gmail.com' && $password === 'Admin1234') {
+                // Si es el administrador, lo redirigimos a la página de administración
+                $_SESSION['user_id'] = $usuarioData['user_id'];
+                $_SESSION['nombre'] = $usuarioData['nombre'];
+                header("Location: ../frontend/Animales.html");
+                exit;
+            }elseif ($usuarioData && ($password === $usuarioData['contrasena'])) {
                 
                 $_SESSION['user_id'] = $usuarioData['user_id'];
                 $_SESSION['nombre'] = $usuarioData['nombre'];
