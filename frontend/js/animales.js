@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     fetchAnimals();
+    fetchAppointments();
 
     document.getElementById('animalForm').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -74,4 +75,46 @@ function deleteAnimal(id) {
             fetchAnimals();
         });
     }
+}
+
+function fetchAppointments() {
+    fetch('../backend/citas.php')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById('appointmentTableBody');
+            tableBody.innerHTML = '';
+            data.forEach(cita => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${cita.nombre_usuario}</td>
+                    <td>${cita.apellido_paterno}</td>
+                    <td>${cita.apellido_materno}</td>
+                    <td>${cita.nombre_mascota}</td>
+                    <td><img src="${cita.foto_url}" alt="${cita.nombre_mascota}" width="50"></td>
+                    <td>${new Date(cita.fecha_cita).toLocaleDateString()}</td>
+                    <td>${new Date(cita.fecha_cita).toLocaleTimeString()}</td>
+                    <td>${cita.estado_cita}</td>
+                    <td>
+                        <button class="btn btn-success btn-sm" onclick="updateAppointmentStatus(${cita.cita_id}, 'Aprobada')">Aprobar</button>
+                        <button class="btn btn-danger btn-sm" onclick="updateAppointmentStatus(${cita.cita_id}, 'Rechazada')">Rechazar</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        });
+}
+
+function updateAppointmentStatus(id, status) {
+    fetch(`../backend/citas.php`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `id=${id}&status=${status}`
+    })
+    .then(response => response.text())
+    .then(message => {
+        alert(message);
+        fetchAppointments();
+    });
 }
