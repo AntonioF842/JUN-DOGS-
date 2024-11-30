@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['nombre'] = $usuarioData['nombre'];
                 header("Location: ../frontend/Animales.html");
                 exit;
-            }elseif ($usuarioData && ($password === $usuarioData['contrasena'])) {
+            }elseif ($usuarioData && password_verify($password, $usuarioData['contrasena'])) {
                 
                 $_SESSION['user_id'] = $usuarioData['user_id'];
                 $_SESSION['nombre'] = $usuarioData['nombre'];
