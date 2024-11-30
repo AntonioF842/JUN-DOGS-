@@ -67,8 +67,6 @@ if ($conn) {
             <a href="Nosotros.html">¿Quiénes Somos?</a>
             <a href="Testimonios.html">Testimonios</a>
             <a href="Contacto.html">Contacto</a>
-            <button class="btn btn-light" onclick="window.location.href='InicioSesion.html'">Iniciar sesión</button>
-            <button class="btn btn-dark">Registro</button>
         </div>
     </div>
 
