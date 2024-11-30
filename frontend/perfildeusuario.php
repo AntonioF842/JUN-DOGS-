@@ -1,25 +1,50 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: InicioSesion.html");
+    exit;
+}
+
+require_once '../backend/config/database.php';
+$database = new Database();
+$conn = $database->getConnection();
+$mascotas = [];
+
+if ($conn) {
+    try {
+        $sql = "SELECT nombre FROM animales WHERE estado_adopcion = 'Disponible'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $mascotas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Error en la base de datos: " . $e->getMessage();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adopta una Mascota</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/perfildeusuario.css">
+    <link rel="stylesheet" href="../frontend/css/perfildeusuario.css">
 </head>
+
 <body>
     <!-- Barra de navegacion -->
     <div class="navbar">
         <img src="./imagenes/nav.png" alt="huellitas">
         <h1><a href="Inicio.html" class="navbar-link">Junt-Dogs</a></h1>
         <img src="./imagenes/nav.png" alt="huellitas">
-        <div class="links"> 
+        <div class="links">
             <a href="Adopciones.html">¿Cómo adoptar?</a>
             <a href="Nosotros.html">¿Quiénes Somos?</a>
             <a href="Testimonios.html">Testimonios</a>
             <a href="Contacto.html">Contacto</a>
-            <button class="btn btn-light" onclick="window.location.href='InicioSesion.html'">Sign in</button>
-            <button class="btn btn-dark">Register</button>
+            <button class="btn btn-light" onclick="window.location.href='InicioSesion.html'">Iniciar sesión</button>
+            <button class="btn btn-dark">Registro</button>
         </div>
     </div>
 
@@ -30,7 +55,8 @@
         <section id="nueva-cita">
             <h2 class="text-center" style="color: #D46A6A; font-family: 'Itim', cursive;">Agendar Nueva Cita</h2>
             <p class="text-center">Completa el formulario para programar tu cita</p>
-            <form action="procesar_cita.php" method="post" class="table-container">
+            <form action="../backend/registrar_cita.php" method="post" class="table-container">
+                <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
                 <table class="table">
                     <thead>
                         <tr>
@@ -39,14 +65,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Nombre Completo</td>
-                            <td><input type="text" class="form-control" placeholder="Escribe tu nombre" name="nombre" required></td>
-                        </tr>
-                        <tr>
-                            <td>Correo Electrónico</td>
-                            <td><input type="email" class="form-control" placeholder="ejemplo@correo.com" name="correo" required></td>
-                        </tr>
                         <tr>
                             <td>Fecha de la Cita</td>
                             <td><input type="date" class="form-control" name="fecha" required></td>
@@ -60,12 +78,14 @@
                             <td>
                                 <select class="form-select" name="mascota" required>
                                     <option value="" disabled selected>Selecciona una mascota</option>
-                                    <option value="Luna">Luna</option>
-                                    <option value="Max">Max</option>
-                                    <option value="Bella">Bella</option>
-                                    <option value="Rocky">Rocky</option>
+                                    <?php foreach ($mascotas as $mascota): ?>
+                                        <option value="<?php echo $mascota['nombre']; ?>"><?php echo $mascota['nombre']; ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </td>
+                        <tr>
+                            <td>Motivo</td>
+                            <td><input type="text" class="form-control" name="motivo" required></td>
                         </tr>
                     </tbody>
                 </table>
@@ -158,7 +178,7 @@
     <div class="logout-container">
         <button class="btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
     </div>
-    
+
     <script>
         function cerrarSesion() {
             // ciere de sesion
@@ -166,21 +186,28 @@
             window.location.href = "InicioSesion.html"; // Redireccion pagina de inicio
         }
     </script>
-   <div class="sidebar-profile">
-    <img src="imagenes/imagen2.jpg" alt="Avatar de usuario" class="profile-avatar">
-    <ul class="sidebar-links">
-        <li><a href="#mi-perfil">Mi Perfil</a></li>
-        <li><a href="#configuracion">Configuración</a></li>
-        <li><a href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
-    </ul>
-</div>
-
-<script>
-    function cerrarSesion() {
-        // Cierre de sesion
-        alert("Sesión cerrada exitosamente.");
-        window.location.href = "InicioSesion.html"; 
-    }
-</script>
+    <div class="sidebar-profile">
+        <img src="imagenes/imagen2.jpg" alt="Avatar de usuario" class="profile-avatar">
+        <ul class="sidebar-links">
+            <li><a href="#mi-perfil">Mi Perfil</a></li>
+            <li><a href="#configuracion">Configuración</a></li>
+            <li><a href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+    <div class="profile-info">
+        <h2>Bienvenido, <?php echo $_SESSION['nombre']; ?></h2>
+        <p>Apellido Paterno: <?php echo $_SESSION['apellido_paterno']; ?></p>
+        <p>Apellido Materno: <?php echo $_SESSION['apellido_materno']; ?></p>
+        <p>Dirección: <?php echo $_SESSION['direccion']; ?></p>
+        <p>Email: <?php echo $_SESSION['email']; ?></p>
+    </div>
+    <script>
+        function cerrarSesion() {
+            // Cierre de sesion
+            alert("Sesión cerrada exitosamente.");
+            window.location.href = "InicioSesion.html";
+        }
+    </script>
 </body>
+
 </html>
