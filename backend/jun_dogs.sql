@@ -67,7 +67,8 @@ CREATE TABLE `citas` (
   `animal_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `fecha_cita` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `motivo` text
+  `motivo` text,
+  `estado_cita` enum('Pendiente','Aprobada','Rechazada') DEFAULT 'Pendiente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

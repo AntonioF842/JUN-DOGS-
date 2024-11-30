@@ -9,6 +9,7 @@ require_once '../backend/config/database.php';
 $database = new Database();
 $conn = $database->getConnection();
 $mascotas = [];
+$citas = [];
 
 if ($conn) {
     try {
@@ -16,6 +17,13 @@ if ($conn) {
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $mascotas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Fetch user's appointments
+        $sql = "SELECT fecha_cita, motivo, estado_cita FROM citas WHERE user_id = :user_id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':user_id', $_SESSION['user_id']);
+        $stmt->execute();
+        $citas = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         echo "Error en la base de datos: " . $e->getMessage();
     }
@@ -123,14 +131,18 @@ if ($conn) {
                                 <th>Fecha</th>
                                 <th>Hora</th>
                                 <th>Mascota</th>
+                                <th>Estado</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ($citas as $cita): ?>
                             <tr>
-                                <td>2024-11-25</td>
-                                <td>10:00 AM</td>
-                                <td>Bella</td>
+                                <td><?php echo date('Y-m-d', strtotime($cita['fecha_cita'])); ?></td>
+                                <td><?php echo date('H:i', strtotime($cita['fecha_cita'])); ?></td>
+                                <td><?php echo $cita['motivo']; ?></td>
+                                <td><?php echo $cita['estado_cita']; ?></td>
                             </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

@@ -29,8 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($animal) {
                 $animal_id = $animal['animal_id'];
 
-                // Insert the new appointment
-                $sql = "INSERT INTO citas (user_id, animal_id, fecha_cita, motivo) VALUES (:user_id, :animal_id, :fecha_cita, :motivo)";
+                // Insert the new appointment with default estado_cita as 'Pendiente'
+                $sql = "INSERT INTO citas (user_id, animal_id, fecha_cita, motivo, estado_cita) VALUES (:user_id, :animal_id, :fecha_cita, :motivo, 'Pendiente')";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':user_id', $user_id);
                 $stmt->bindParam(':animal_id', $animal_id);
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute();
 
                 header("Location: ../frontend/perfildeusuario.php");
-                exit;
+                exit();
             } else {
                 echo "Mascota no encontrada.";
             }
