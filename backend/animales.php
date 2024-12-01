@@ -57,12 +57,21 @@ if ($method == 'GET') {
         echo "Error: " . $stmt->errorInfo()[2];
     }
 } elseif ($method == 'DELETE') {
-    $stmt = $conexion->prepare("DELETE FROM animales WHERE animal_id = ?");
-    $stmt->bindParam(1, $_GET['id']);
-    if ($stmt->execute()) {
-        echo "Animal eliminado.";
-    } else {
-        echo "Error: " . $stmt->errorInfo()[2];
+    try {
+        $conexion->beginTransaction();
+        $stmt = $conexion->prepare("DELETE FROM citas WHERE animal_id = ?");
+        $stmt->bindParam(1, $_GET['id']);
+        $stmt->execute();
+
+        $stmt = $conexion->prepare("DELETE FROM animales WHERE animal_id = ?");
+        $stmt->bindParam(1, $_GET['id']);
+        $stmt->execute();
+
+        $conexion->commit();
+        echo "Animal y sus citas eliminados.";
+    } catch (PDOException $e) {
+        $conexion->rollBack();
+        echo "Error: " . $e->getMessage();
     }
 }
 ?>
