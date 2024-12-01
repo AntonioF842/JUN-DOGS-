@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -64,11 +64,95 @@
         </div>
     </div>
 
+    <!-- Testimonios de Voluntarios -->
+    <div class="container my-5">
+        <h2 class="text-center mb-4" style="color: #3f2d21;">Testimonios de Voluntarios</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="./imagenes/voluntario1.webp" class="card-img-top" alt="Laura y su experiencia">
+                    <div class="card-body">
+                        <h5 class="card-title">Laura Fernández</h5>
+                        <p class="card-text">"Ser voluntaria de Junt-Dogs ha sido una experiencia transformadora. Ver la felicidad de los perros al ser adoptados es indescriptible."</p>
+                        <p class="text-muted">Noviembre 2023</p>
+                    </div>
+                </div>
+            </div>
 
-    <footer>
-        <hr class="divider">
-        <p class="footer-text">Junt-Dogs &copy; 2024 - Adopta un amigo hoy mismo. Todos los derechos reservados.</p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="./imagenes/voluntario2.webp" class="card-img-top" alt="Juan y su experiencia">
+                    <div class="card-body">
+                        <h5 class="card-title">Juan Pérez</h5>
+                        <p class="card-text">"Trabajar en la fundación me ha dado la oportunidad de hacer una diferencia real. Ayudar a estos animales es un regalo."</p>
+                        <p class="text-muted">Octubre 2023</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="./imagenes/voluntario3.jpg" class="card-img-top" alt="Carolina y su experiencia">
+                    <div class="card-body">
+                        <h5 class="card-title">Carolina López</h5>
+                        <p class="card-text">"Ver cómo los perros encuentran un hogar me llena de satisfacción. Junt-Dogs es una gran familia para ellos."</p>
+                        <p class="text-muted">Septiembre 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de estadísticas -->
+    <div class="container my-5 text-center">
+        <h2 style="color: #3f2d21;">Impacto de Junt-Dogs</h2>
+        <p>En Junt-Dogs nos enorgullece poder compartir algunos logros importantes:</p>
+        <div class="row">
+            <div class="col-md-3">
+                <h3>200+</h3>
+                <p>Perros Adoptados</p>
+            </div>
+            <div class="col-md-3">
+                <h3>50+</h3>
+                <p>Voluntarios Activos</p>
+            </div>
+            <div class="col-md-3">
+                <h3>100%</h3>
+                <p>Compromiso con el bienestar animal</p>
+            </div>
+            <div class="col-md-3">
+                <h3>20+</h3>
+                <p>Eventos y campañas realizadas</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulario de Testimonios -->
+    <div class="container my-5">
+        <h3 class="text-center" style="color: #3f2d21;">¡Comparte tu Historia con Nosotros!</h3>
+        <form id="testimonioForm">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="testimonio" class="form-label">Tu Testimonio:</label>
+                <textarea class="form-control" id="testimonio" name="testimonio" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark">Enviar Testimonio</button>
+        </form>
+    </div>
+
+    <script>
+        // Prevenir el envío del formulario
+        document.getElementById("testimonioForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Previene que el formulario se envíe
+            alert("Gracias por compartir tu testimonio. ¡Lo hemos recibido!");
+            
+            // Actualizar la página después de que el usuario haya dado aceptar
+            location.reload();
+        });
+    </script>
+
 </body>
 </html>

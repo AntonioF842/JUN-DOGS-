@@ -1,49 +1,225 @@
-.navbar {
-    font-family: "Itim", cursive;
-    font-weight: 400;
-    font-style: normal;
-    background-color: rgba(200, 178, 151, 0.811);
-    display: flex;                 
-    align-items: center;           
-    justify-content: space-between;
-    padding: 10px 25px;
+/* Fondo para toda la página */
+body {
+    background-color: #FFF5CD; /* Color de fondo claro */
+    margin: 0;
+    padding: 0;
+    font-family: "Itim", cursive; /* Aplica la fuente Itim a toda la página */
 }
 
-.navbar img{
+/* Estilos para la barra de opciones */
+.navbar {
+    font-family: "Itim", cursive; /* Aplica la fuente Itim */
+    font-weight: 400;
+    background-color: #FFCFB3; /* Color de fondo suave */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Distribuye los elementos a los lados */
+    padding: 10px 25px;
+    flex-wrap: wrap;
+}
+
+/* Contenedor para las imágenes y el título */
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra las imágenes y el título */
+    gap: 10px; /* Espacio entre las imágenes y el título */
+}
+
+/* Estilos para las imágenes */
+.navbar img {
     width: 65px;
 }
 
-.navbar h1{
+/* Estilos para el título */
+.navbar h1 {
     font-size: 40px;
-    color:rgb(78, 59, 37)
+    color: #D46A6A; /* Color de texto del título */
+    margin: 0;
 }
+
+/* Contenedor para las opciones de navegación */
+.navbar .links {
+    display: flex;
+    gap: 15px;
+}
+
+/* Enlaces de la barra de navegación */
 .navbar a {
     margin-right: 10px;
-    margin-right: 10px;
-    color:white;
+    color: #333;
     text-decoration: none;
     transition: color 0.3s, font-size 0.3s;
     padding: 2px;
 }
 
-.navbar a:hover{
-    color: rgb(78, 59, 37);
-    font-size: 25px;
+.navbar a:hover {
+    color: #D46A6A; /* Color en hover */
+    font-size: 20px;
 }
 
-.navbar .links {
-    display: flex;
-    gap: 5px; 
+/* Estilo para el enlace del nombre Junt-Dogs */
+.navbar-link {
+    color: #000;
+    text-decoration: none;
+    font-size: 2rem;
+    transition: color 0.3s ease;
 }
 
-body {
-    background-color: rgb(206, 192, 170);
+.navbar-link:hover {
+    color: #3f2d21;
 }
 
+/* Carrusel */
+.carousel-inner {
+    width: 80%; /* Limita el ancho del carrusel */
+    max-width: 1000px;
+    margin: 0 auto;
+    max-height: 450px;
+    overflow: hidden;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para las tarjetas de testimonios */
 .card {
-    background-color: rgb(200, 245, 245);
+    transition: transform 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.card.card-body {
-    background-color: rgb(127, 36, 143);
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Estilos para el cuadro de información */
+.info-box {
+    background-color: #FFCFB3; /* Fondo atractivo */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    font-family: "Itim", cursive; /* Aplica la fuente Itim */
+    color: #333;
+    transition: box-shadow 0.3s ease;
+}
+
+.info-box:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.info-box p {
+    margin-bottom: 10px;
+}
+
+.info-box ul {
+    list-style: none;
+    padding: 0;
+    color: #333;
+}
+
+.info-box ul li {
+    margin: 5px 0;
+}
+
+.info-box a.btn {
+    margin-top: 15px;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #D46A6A;
+    color: #fff;
+    border: none;
+}
+
+.info-box a.btn:hover {
+    background-color: #C14C4C;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 1200px) {
+    .carousel-item img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar h1 {
+        font-size: 30px;
+    }
+    .carousel-item img {
+        height: 200px;
+    }
+    .links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .links button {
+        margin-top: 0.5rem;
+    }
+}
+
+/* Estilos para la sección de eventos */
+.eventos {
+    background-color: #FFDAC1; /* Color de fondo uniforme para la sección de eventos */
+    text-align: center;
+    padding: 30px;
+}
+
+.eventos h2 {
+    font-family: "Itim", cursive;
+    font-size: 2.5em;
+    color: #000000;
+    margin-bottom: 0px;
+}
+
+.eventos-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.eventos .card {
+    width: 200px;
+    background-color: #FFF;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 10px;
+}
+
+.eventos .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.eventos .btn {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .eventos h2 {
+        font-size: 2em;
+    }
+    .navbar img {
+        width: 50px;
+    }
 }

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina principal</title>
+    <title>Página Principal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/inicio.css">
     <link rel="shortcut icon" href="./imagenes/favicon.png" type="image/x-icon">
@@ -19,6 +19,74 @@
         /* Estilo cuando el ratón pasa sobre el enlace */
         .navbar-link:hover {
             color: #3f2d21; /* Color al pasar el ratón */
+        }
+
+        /* Estilo para los eventos */
+        .eventos {
+            margin: 50px 20px;
+            text-align: center;
+        }
+        
+        .eventos h2 {
+            font-family: "Itim", cursive;
+            font-size: 2.5em;
+            color: #000000;
+            margin-bottom:20px;
+        }
+
+        .eventos-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .eventos .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 300px;
+            overflow: hidden;
+        }
+
+        .eventos img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* Estilo para la sección de historias de adopción */
+        .historias {
+            background-color: #fedf76;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .historias h2 {
+            margin-bottom: 30px;
+        }
+
+        .historias p {
+            margin: 15px 0;
+        }
+
+        /* Estilos para el cuadro de información */
+        .info-box {
+            background-color: #FFCFB3;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-family: "Itim", cursive;
+            color: #000000;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        .info-box ul li {
+            margin: 5px 0;
         }
     </style>
 </head>
@@ -37,47 +105,95 @@
         </div>
     </div>
 
-    <hr style="border: 0px; height: 5px; background-color: #3f2d21;">
+    <!-- Sección de Carrusel y Cuadro de Información -->
+    <div style="display: flex; align-items: center; gap: 20px; margin: 20px;">
+        <!-- Cuadro de información -->
+        <div class="info-box" style="flex: 1;">
+            <h3 class="text-center" style="color: #000000; font-size: 1.8rem; margin-bottom: 15px;">Albergue Junt-Dogs</h3>
+            <p><strong>Ubicación:</strong><br>Salamanca, Guanajuato, México</p>
 
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="./imagenes/alber.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="./imagenes/gatitos.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="./imagenes/perritos.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="./imagenes/gato2.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="./imagenes/2.jpg" class="d-block w-100" alt="...">
+            <p><strong>Horarios de Visita:</strong><br>
+                Lunes a Sábado: 9:00 AM - 5:00 PM<br>
+                Domingos: 9:00 AM - 12:00 PM
+            </p>
+
+            <p><strong>Contacto:</strong><br>
+                    Teléfono: (464) 456-7890<br>
+                    Email: adopciones@juntdogs.org
+            </p>
+
+            <p><strong>Servicios:</strong><br>
+                - Adopciones responsables<br>
+                - Esterilización<br>
+                - Vacunación<br>
+                - Atención veterinaria<br>
+                - Rehabilitación animal
+            </p>
+
+            <a href="Contacto.html" class="btn btn-dark mt-3" style="transition: background-color 0.3s, transform 0.2s;" onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)'">Contacto</a>
+        </div>
+
+        <!-- Carrusel -->
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" style="flex: 2;">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./imagenes/alber.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./imagenes/gatitos.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./imagenes/perritos.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./imagenes/gato2.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./imagenes/2.jpg" class="d-block w-100" alt="...">
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Sección de Próximos Eventos -->
     <section class="eventos">
-        <h2>Próximos Eventos!</h2>
+        <h2>Próximos Eventos en Salamanca</h2>
         <div class="eventos-cards">
             <div class="card">
-                <img src="./imagenes/evento1.jpg" alt="Evento 1">
-                <button class="btn btn-dark">Información</button>
+                <img src="./imagenes/evento1.webp" alt="Evento Feria de Adopciones">
+                <h4>Feria de Adopciones</h4>
+                <p>Fecha: 8 de diciembre, 2024</p>
+                <p>Lugar: Parque Central, Salamanca</p>
+                <button class="btn btn-dark">Más información</button>
             </div>
             <div class="card">
-                <img src="./imagenes/evento2.jpg" alt="Evento 2">
-                <button class="btn btn-dark">Información</button>
+                <img src="./imagenes/evento2.webp" alt="Evento Carrera con Mascotas">
+                <h4>Carrera con Mascotas</h4>
+                <p>Fecha: 15 de diciembre, 2024</p>
+                <p>Lugar: Malecón del Río, Salamanca</p>
+                <button class="btn btn-dark">Más información</button>
+            </div>
+            <div class="card">
+                <img src="./imagenes/evento3.jpeg" alt="Evento Concierto benéfico">
+                <h4>Colecta para Junt-Dogs</h4>
+                <p>Fecha: 22 de diciembre, 2024</p>
+                <p>Lugar: Auditorio Municipal, Salamanca</p>
+                <button class="btn btn-dark">Más información</button>
             </div>
         </div>
     </section>
 
+    <!-- Sección de Historias de Adopción -->
+    <section class="historias">
+        <h2>Historias de Adopción</h2>
+        <p>"Luna encontró un hogar lleno de amor en Salamanca. Gracias a nuestros eventos, conoció a una familia maravillosa."</p>
+        <p>"Rocky, un labrador juguetón, ahora es el mejor amigo de una familia con dos pequeños en Salamanca."</p>
+        <p>"Mia, una hermosa gatita, fue adoptada por una estudiante de la universidad local y ahora tiene un compañero de estudio."</p>
+    </section>
+
     <script src="./js/index.js"></script>
 </body>
-
-    <footer>
+    <footer align="center">
         <hr class="divider">
         <p class="footer-text">Junt-Dogs &copy; 2024 - Adopta un amigo hoy mismo. Todos los derechos reservados.</p>
     </footer>

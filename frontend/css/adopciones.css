@@ -426,11 +426,26 @@ body {
     width: 280px;
     background-color: #FFF;
     padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    border: 6px solid #D46A6A;  /* Marco grueso con el color rosa existente */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     height: 100%;
-    border-radius: 0 15px 15px 0;
+}
+
+/* Ajuste adicional para dar más énfasis al marco */
+.filter-sidebar::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background-color: #D46A6A;
+    z-index: -1;
+    border-radius: 20px;
+    opacity: 0.2;
 }
 
 .filter-sidebar h3 {
