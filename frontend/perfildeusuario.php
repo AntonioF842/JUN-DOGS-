@@ -51,9 +51,12 @@ if ($conn) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adopta una Mascota</title>
+    <title>Perfil de Usuario</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../frontend/css/perfildeusuario.css">
+        <link rel="stylesheet" href="./css/inicio.css">
+    <link rel="shortcut icon" href="./imagenes/favicon.png" type="image/x-icon">
+
 </head>
 
 <body>
@@ -67,11 +70,20 @@ if ($conn) {
             <a href="Nosotros.html">¿Quiénes Somos?</a>
             <a href="Testimonios.html">Testimonios</a>
             <a href="Contacto.html">Contacto</a>
+            <button class="btn btn-light" onclick="window.location.href='InicioSesion.html'">Iniciar sesión</button>
+            <button class="btn btn-dark" onclick="window.location.href='Registro.html'">Registro</button>
         </div>
     </div>
 
     <hr class="divider">
 
+    <div class="profile-info">
+        <h2>Bienvenido, <?php echo $_SESSION['nombre']; ?></h2>
+        <p>Apellido Paterno: <?php echo $_SESSION['apellido_paterno']; ?></p>
+        <p>Apellido Materno: <?php echo $_SESSION['apellido_materno']; ?></p>
+        <p>Dirección: <?php echo $_SESSION['direccion']; ?></p>
+        <p>Email: <?php echo $_SESSION['email']; ?></p>
+    </div>
     <!-- Contenido principal -->
     <main class="container mt-4">
         <section id="nueva-cita">
@@ -132,21 +144,21 @@ if ($conn) {
                 </thead>
                 <tbody>
                     <?php foreach ($citas as $cita): ?>
-                    <tr>
-                        <td><?php echo date('Y-m-d', strtotime($cita['fecha_cita'])); ?></td>
-                        <td><?php echo date('H:i', strtotime($cita['fecha_cita'])); ?></td>
-                        <td><?php echo $cita['nombre_mascota']; ?></td>
-                        <td><img src="<?php echo $cita['foto_url']; ?>" alt="<?php echo $cita['nombre_mascota']; ?>" width="50"></td>
-                        <td><?php echo $cita['motivo']; ?></td>
-                        <td><?php echo $cita['estado_cita']; ?></td>
-                        <td>
-                            <form action="../backend/eliminar_cita.php" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta cita?');" style="display:inline;">
-                                <input type="hidden" name="cita_id" value="<?php echo $cita['cita_id']; ?>">
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                            </form>
-                            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarCita<?php echo $cita['cita_id']; ?>">Editar</button>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td><?php echo date('Y-m-d', strtotime($cita['fecha_cita'])); ?></td>
+                            <td><?php echo date('H:i', strtotime($cita['fecha_cita'])); ?></td>
+                            <td><?php echo $cita['nombre_mascota']; ?></td>
+                            <td><img src="<?php echo $cita['foto_url']; ?>" alt="<?php echo $cita['nombre_mascota']; ?>" width="50"></td>
+                            <td><?php echo $cita['motivo']; ?></td>
+                            <td><?php echo $cita['estado_cita']; ?></td>
+                            <td>
+                                <form action="../backend/eliminar_cita.php" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta cita?');" style="display:inline;">
+                                    <input type="hidden" name="cita_id" value="<?php echo $cita['cita_id']; ?>">
+                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                </form>
+                                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarCita<?php echo $cita['cita_id']; ?>">Editar</button>
+                            </td>
+                        </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -154,45 +166,45 @@ if ($conn) {
     </main>
 
     <?php foreach ($citas as $cita): ?>
-    <!-- Modal para editar cita -->
-    <div class="modal fade" id="modalEditarCita<?php echo $cita['cita_id']; ?>" tabindex="-1" aria-labelledby="modalEditarCitaLabel<?php echo $cita['cita_id']; ?>" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-custom">
-                <div class="modal-header modal-header-custom">
-                    <h5 class="modal-title" id="modalEditarCitaLabel<?php echo $cita['cita_id']; ?>">Editar Cita</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body modal-body-custom">
-                    <form action="../backend/editar_cita.php" method="post">
-                        <input type="hidden" name="cita_id" value="<?php echo $cita['cita_id']; ?>">
-                        <div class="mb-3">
-                            <label for="fecha<?php echo $cita['cita_id']; ?>" class="form-label">Fecha de la Cita</label>
-                            <input type="date" class="form-control" id="fecha<?php echo $cita['cita_id']; ?>" name="fecha" value="<?php echo date('Y-m-d', strtotime($cita['fecha_cita'])); ?>" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="hora<?php echo $cita['cita_id']; ?>" class="form-label">Hora de la Cita</label>
-                            <input type="time" class="form-control" id="hora<?php echo $cita['cita_id']; ?>" name="hora" value="<?php echo date('H:i', strtotime($cita['fecha_cita'])); ?>" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="mascota<?php echo $cita['cita_id']; ?>" class="form-label">Mascota de Interés</label>
-                            <select class="form-select" id="mascota<?php echo $cita['cita_id']; ?>" name="mascota" required>
-                                <?php foreach ($mascotas as $mascota): ?>
-                                    <option value="<?php echo $mascota['nombre']; ?>" <?php echo ($mascota['nombre'] == $cita['nombre_mascota']) ? 'selected' : ''; ?>><?php echo $mascota['nombre']; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="motivo<?php echo $cita['cita_id']; ?>" class="form-label">Motivo</label>
-                            <input type="text" class="form-control" id="motivo<?php echo $cita['cita_id']; ?>" name="motivo" value="<?php echo $cita['motivo']; ?>" required>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                        </div>
-                    </form>
+        <!-- Modal para editar cita -->
+        <div class="modal fade" id="modalEditarCita<?php echo $cita['cita_id']; ?>" tabindex="-1" aria-labelledby="modalEditarCitaLabel<?php echo $cita['cita_id']; ?>" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-custom">
+                    <div class="modal-header modal-header-custom">
+                        <h5 class="modal-title" id="modalEditarCitaLabel<?php echo $cita['cita_id']; ?>">Editar Cita</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body modal-body-custom">
+                        <form action="../backend/editar_cita.php" method="post">
+                            <input type="hidden" name="cita_id" value="<?php echo $cita['cita_id']; ?>">
+                            <div class="mb-3">
+                                <label for="fecha<?php echo $cita['cita_id']; ?>" class="form-label">Fecha de la Cita</label>
+                                <input type="date" class="form-control" id="fecha<?php echo $cita['cita_id']; ?>" name="fecha" value="<?php echo date('Y-m-d', strtotime($cita['fecha_cita'])); ?>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="hora<?php echo $cita['cita_id']; ?>" class="form-label">Hora de la Cita</label>
+                                <input type="time" class="form-control" id="hora<?php echo $cita['cita_id']; ?>" name="hora" value="<?php echo date('H:i', strtotime($cita['fecha_cita'])); ?>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mascota<?php echo $cita['cita_id']; ?>" class="form-label">Mascota de Interés</label>
+                                <select class="form-select" id="mascota<?php echo $cita['cita_id']; ?>" name="mascota" required>
+                                    <?php foreach ($mascotas as $mascota): ?>
+                                        <option value="<?php echo $mascota['nombre']; ?>" <?php echo ($mascota['nombre'] == $cita['nombre_mascota']) ? 'selected' : ''; ?>><?php echo $mascota['nombre']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="motivo<?php echo $cita['cita_id']; ?>" class="form-label">Motivo</label>
+                                <input type="text" class="form-control" id="motivo<?php echo $cita['cita_id']; ?>" name="motivo" value="<?php echo $cita['motivo']; ?>" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     <?php endforeach; ?>
 
     <!-- Boton y Panel  -->
@@ -246,55 +258,80 @@ if ($conn) {
                 </div>
                 <div class="modal-body modal-body-custom">
                     <?php if ($proximaCita): ?>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Hora</th>
-                                <th>Mascota</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><?php echo date('Y-m-d', strtotime($proximaCita['fecha_cita'])); ?></td>
-                                <td><?php echo date('H:i', strtotime($proximaCita['fecha_cita'])); ?></td>
-                                <td><?php echo $proximaCita['nombre_mascota']; ?></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Hora</th>
+                                    <th>Mascota</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><?php echo date('Y-m-d', strtotime($proximaCita['fecha_cita'])); ?></td>
+                                    <td><?php echo date('H:i', strtotime($proximaCita['fecha_cita'])); ?></td>
+                                    <td><?php echo $proximaCita['nombre_mascota']; ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     <?php else: ?>
-                    <p>No tienes citas próximas.</p>
+                        <p>No tienes citas próximas.</p>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="logout-container">
+        <button class="btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
+    </div>
+
+       <!-- Footer -->
+       <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Junt-Dogs</h5>
+                    <p>
+                        Dedicados a encontrar hogares amorosos para perros y gatos necesitados en Salamanca, Guanajuato.
+                    </p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Links Rápidos</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="Adopciones.html" class="text-dark">Adopciones</a></li>
+                        <li><a href="Nosotros.html" class="text-dark">Quiénes Somos</a></li>
+                        <li><a href="Contacto.html" class="text-dark">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-0">Síguenos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#!" class="text-dark">Facebook</a></li>
+                        <li><a href="#!" class="text-dark">Instagram</a></li>
+                        <li><a href="#!" class="text-dark">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2024 Junt-Dogs - Adopta un amigo hoy mismo
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function togglePanel() {
             const panel = document.getElementById('panel-options');
             panel.classList.toggle('panel-visible');
         }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <div class="logout-container">
-        <button class="btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
-    </div>
 
-    <script>
         function cerrarSesion() {
-            // ciere de sesion
             alert("Sesión cerrada exitosamente.");
-            window.location.href = "InicioSesion.html"; // Redireccion pagina de inicio
+            window.location.href = "InicioSesion.html";
         }
     </script>
-    <div class="profile-info">
-        <h2>Bienvenido, <?php echo $_SESSION['nombre']; ?></h2>
-        <p>Apellido Paterno: <?php echo $_SESSION['apellido_paterno']; ?></p>
-        <p>Apellido Materno: <?php echo $_SESSION['apellido_materno']; ?></p>
-        <p>Dirección: <?php echo $_SESSION['direccion']; ?></p>
-        <p>Email: <?php echo $_SESSION['email']; ?></p>
-    </div>
+
     <script>
         function cerrarSesion() {
             // Cierre de sesion
