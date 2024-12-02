@@ -1,5 +1,5 @@
 # ¡Jun Dogs 🐕🐾🤎!
-
+Proyecto final para la materia de ingeniería de software a cargo del profesor Marco Aurelio Ramírez
 ## Pantallas de la página web:
 
 ### Pantalla de inicio
