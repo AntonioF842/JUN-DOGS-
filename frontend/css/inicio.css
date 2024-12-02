@@ -1,6 +1,6 @@
 /* Fondo para toda la página */
 body {
-    background-color: #FFF5CD; /* Establece el color de fondo para todo el body */
+    background-color: #e6e6e6  ; /* Establece el color de fondo para todo el body */
     margin: 0;
     padding: 0;
 }
@@ -9,7 +9,7 @@ body {
 .navbar {
     font-family: "Itim", cursive;
     font-weight: 400;
-    background-color: #FFCFB3;
+    background-color: #cc703ade ;
     display: flex;
     align-items: center;
     justify-content: center;  /* Distribuye los elementos a los lados */
@@ -46,14 +46,14 @@ body {
 /* Enlaces de la barra de navegación */
 .navbar a {
     margin-right: 10px;
-    color: #333;
+    color: #000000;
     text-decoration: none;
     transition: color 0.3s, font-size 0.3s;
     padding: 2px;
 }
 
 .navbar a:hover {
-    color: #D46A6A;
+    color: #000000;
     font-size: 20px;
 }
 
@@ -174,7 +174,7 @@ body {
 
 /* Estilos para la sección de eventos */
 .eventos {
-    background-color: #FFDAC1; /* Color de fondo uniforme para la sección de eventos */
+    background-color: #ffc39f; /* Color de fondo uniforme para la sección de eventos */
     text-align: center;
     padding: 30px;
 }

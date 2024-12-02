@@ -1,6 +1,6 @@
 /* Fondo para toda la página */
 body {
-    background-color: #FFF5CD; /* Color de fondo claro */
+    background-color: #e6e6e6 ; /* Color de fondo claro */
     margin: 0;
     padding: 0;
     font-family: "Itim", cursive; /* Aplica la fuente Itim a toda la página */
@@ -10,7 +10,7 @@ body {
 .navbar {
     font-family: "Itim", cursive; /* Aplica la fuente Itim */
     font-weight: 400;
-    background-color: #FFCFB3; /* Color de fondo suave */
+    background-color: #da641fbf; /* Color de fondo suave */
     display: flex;
     align-items: center;
     justify-content: center; /* Distribuye los elementos a los lados */
@@ -47,7 +47,7 @@ body {
 /* Enlaces de la barra de navegación */
 .navbar a {
     margin-right: 10px;
-    color: #333;
+    color: #000000;
     text-decoration: none;
     transition: color 0.3s, font-size 0.3s;
     padding: 2px;

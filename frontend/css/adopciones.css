@@ -33,7 +33,7 @@ body {
 /* Estilos para el título */
 .navbar h1 {
     font-size: 40px;
-    color: #D46A6A;
+    color: #000000;
     margin: 0;  /* Quitar margen para un ajuste adecuado */
 }
 
@@ -46,14 +46,14 @@ body {
 /* Enlaces de la barra de navegación */
 .navbar a {
     margin-right: 10px;
-    color: #333;
+    color: #000000;
     text-decoration: none;
     transition: color 0.3s, font-size 0.3s;
     padding: 2px;
 }
 
 .navbar a:hover {
-    color: #D46A6A;
+    color: #000000;
     font-size: 20px;
 }
 
@@ -64,7 +64,7 @@ body {
 }
 
 .carousel-item {
-    display: inline-block; /* Hace que las cartas se alineen una al lado de otra */
+    display: contents; /* Hace que las cartas se alineen una al lado de otra */
     padding: 10px; /* Espaciado para separar las cartas */
     width: 100%; /* Asegura que cada carta ocupe todo el ancho disponible */
 }
@@ -125,7 +125,7 @@ body {
     background-color: #3f2d21;
 }
 
-/* Sección de mascotas disponibles para adopción */
+/* Seccion de mascotas disponibles para adopcion */
 .anim-gallery {
     background-color: #FFDAC1; /* Color de fondo uniforme para la sección de adopciones */
     text-align: center;
@@ -190,7 +190,7 @@ body {
     background-color: #B95353;
 }
 
-/* Ajustes para dispositivos móviles */
+/* Ajustes para dispositivos moviles */
 @media (max-width: 768px) {
     .navbar h1 {
         font-size: 30px;
@@ -208,7 +208,7 @@ body {
 
 /* Estilos para el fondo de toda la página */
 body {
-    background-color: #FFF5CD; /* Establece el color de fondo para todo el body */
+    background-color: #e6e6e6 ; /* Establece el color de fondo para todo el body */
     margin: 0;
     padding: 0;
 }
@@ -217,7 +217,7 @@ body {
 .navbar {
     font-family: "Itim", cursive;
     font-weight: 400;
-    background-color: #FFCFB3;
+    background-color: #da641fbf;
     display: flex;
     align-items: center;
     justify-content: center;  /* Distribuye los elementos a los lados */
@@ -254,88 +254,118 @@ body {
 /* Enlaces de la barra de navegación */
 .navbar a {
     margin-right: 10px;
-    color: #333;
+    color: #000000;
     text-decoration: none;
     transition: color 0.3s, font-size 0.3s;
     padding: 2px;
 }
 
 .navbar a:hover {
-    color: #D46A6A;
+    color: #000000;
     font-size: 20px;
 }
 
 /* Estilos para el carrusel */
+.carousel-container {
+    margin: 30px auto;
+    max-width: 1100px; /* Aumentar el ancho máximo para una mejor visualización */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15); /* Añadir sombra al carrusel */
+}
+
 .carousel-inner {
-    display: flex; /* Cambiar de flex a block */
-    text-align: center; /* Centra el contenido dentro del contenedor */
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 25px 0;
 }
 
 .carousel-item {
-    display: inline-block; /* Hace que las cartas se alineen una al lado de otra */
-    padding: 10px; /* Espaciado para separar las cartas */
-    width: 100%; /* Asegura que cada carta ocupe todo el ancho disponible */
+    padding: 15px;
+    width: 100%;
+    transition: transform 0.5s ease; /* Transición más suave al cambiar de imagen */
 }
 
+.carousel-item.active {
+    transform: scale(1.05); /* Efecto para destacar el elemento activo */
+}
+
+/* Botones de navegación del carrusel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #3f2d21; /* Color oscuro de fondo para visibilidad */
+    border-radius: 50%;
+    padding: 15px; /* Aumentar el tamaño del botón */
+}
+
+/* Estilo mejorado para las tarjetas */
 .card {
-    margin: 0 auto; /* Centra la carta dentro del carrusel */
-    width: 18rem; /* Ajusta el tamaño de las tarjetas */
+    margin: 0 auto;
+    width: 20rem; /* Hacer las tarjetas un poco más grandes */
     border: none;
-    border-radius: 15px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s;
-    display: inline-block; /* Necesario para que las cartas no ocupen todo el espacio */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Añadir sombra más notoria para resaltar las tarjetas */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.1); /* Aumentar la escala al hacer hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra más fuerte al hacer hover */
 }
 
 .card-img-top {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    height: 250px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 280px; /* Aumentar la altura de la imagen */
     object-fit: cover;
+    transition: transform 0.3s ease; /* Añadir animación a la imagen al hacer hover */
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.1); /* Efecto de zoom al hacer hover sobre la imagen */
 }
 
 .card-body {
     text-align: center;
     background-color: #fff;
-    padding: 20px;
+    padding: 25px;
 }
 
 .card-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* Hacer el título más grande */
+    font-family: cursive;
     color: #3f2d21;
     font-weight: bold;
+    margin-bottom: 15px; /* Añadir margen inferior para separar el título del contenido */
 }
 
 .card-text {
-    color: #555;
+    color: #666; /* Un tono ligeramente más oscuro para mejor legibilidad */
+    font-size: 1.1rem; /* Ajuste del tamaño del texto */
+    line-height: 1.6; /* Mejorar la legibilidad con un mayor espaciado */
 }
 
 .btn-adopt {
     background-color: #D46A6A;
     color: white;
+    font-family: cursive;
     border: none;
-    border-radius: 10px;
-    padding: 8px 20px;
-    transition: background-color 0.3s ease;
+    border-radius: 15px;
+    padding: 12px 30px; /* Botones más grandes y cómodos */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2); /* Añadir sombra a los botones */
 }
 
 .btn-adopt:hover {
-    background-color: #3f2d21;
-}
-
-/* Botones de navegación del carrusel */
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: #3f2d21;
+    background-color: #c55757;
+    transform: translateY(-4px); /* Efecto de elevación al hacer hover */
 }
 
 /* Sección de mascotas disponibles para adopción */
 .anim-gallery {
-    background-color: #FFDAC1; /* Color de fondo uniforme para la sección de adopciones */
+    background-color: #afafaf  ; /* Color de fondo uniforme para la sección de adopciones */
     text-align: center;
     padding: 30px;
 }
@@ -343,7 +373,7 @@ body {
 .anim-gallery h2 {
     font-family: "Itim", cursive;
     font-size: 2.5em;
-    color: #D46A6A;
+    color: #000000;
     margin-bottom: 20px;
 }
 
@@ -370,7 +400,7 @@ body {
 .anim-tarj h3 {
     font-family: "Itim", cursive;
     font-size: 1.5em;
-    color: #D46A6A;
+    color: #000000;
 }
 
 .anim-tarj p {
@@ -386,6 +416,7 @@ body {
 .adopt-button {
     background-color: #D46A6A;
     color: #fff;
+    font-family: cursive;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -417,8 +448,9 @@ body {
 /* Nuevo contenedor flexible para la sección principal */
 .content-wrapper {
     display: flex;
-    background-color: #FFDAC1;
+    background-color: #afafaf ;
     min-height: calc(100vh - 200px); /* Ajusta según el tamaño de tu navbar */
+    align-items: center;
 }
 
 /* Estilos para la barra lateral de filtros */
@@ -442,14 +474,14 @@ body {
     left: -10px;
     right: -10px;
     bottom: -10px;
-    background-color: #D46A6A;
+    background-color: #e6e6e6 ;
     z-index: -1;
     border-radius: 20px;
     opacity: 0.2;
 }
 
 .filter-sidebar h3 {
-    color: #D46A6A;
+    color: #000000;
     font-family: "Itim", cursive;
     font-size: 1.5em;
     margin-bottom: 20px;
@@ -482,6 +514,7 @@ body {
 
 .filter-btn {
     background-color: #D46A6A;
+    font-family: "Itim", cursive;
     color: white;
     border: none;
     padding: 10px 20px;

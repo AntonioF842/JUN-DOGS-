@@ -8,6 +8,16 @@
     <link rel="stylesheet" href="./css/inicio.css">
     <link rel="shortcut icon" href="./imagenes/favicon.png" type="image/x-icon">
     <style>
+        .navbar {
+            font-family: "Itim", cursive;
+            font-weight: 400;
+            background-color: #da641fbf ;
+            display: flex;
+            align-items: center;
+            justify-content: center;  /* Distribuye los elementos a los lados */
+            padding: 10px 25px;
+            flex-wrap: wrap;
+        }
         /* Estilo para el enlace del nombre Junt-Dogs */
         .navbar-link {
             color: #000; /* Color normal del texto */
@@ -70,10 +80,10 @@
 
         /* Estilos para el cuadro de información */
         .info-box {
-            background-color: #FFCFB3;
+            background-color: #ffc39fa3;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px #000000;
             font-family: "Itim", cursive;
             color: #000000;
         }
@@ -88,6 +98,89 @@
         .info-box ul li {
             margin: 5px 0;
         }
+        .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro */
+        padding-top: 60px;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .modal-content {
+        background-color: #fff;
+        margin: 5% auto;
+        padding: 20px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 700px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transform: translateY(-50px);
+        opacity: 0;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    }
+
+    .modal-content.show {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .close {
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        transition: color 0.3s ease;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* Estilos para la tabla en el modal */
+    .eventos-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    .eventos-table th,
+    .eventos-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .eventos-table th {
+        background-color: #f2f2f2;
+        color: #555;
+    }
+
+    .eventos-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .eventos-table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .eventos-table td {
+        color: #333;
+    }
+
+    .eventos-table td strong {
+        color: #000;
+    }
     </style>
 </head>
 <body>
@@ -152,7 +245,7 @@
                     <img src="./imagenes/2.jpg" class="d-block w-100" alt="...">
                 </div>
             </div>
-        </div>
+        </div>        
     </div>
 
     <!-- Sección de Próximos Eventos -->
@@ -183,18 +276,122 @@
         </div>
     </section>
 
-    <!-- Sección de Historias de Adopción -->
-    <section class="historias">
-        <h2>Historias de Adopción</h2>
-        <p>"Luna encontró un hogar lleno de amor en Salamanca. Gracias a nuestros eventos, conoció a una familia maravillosa."</p>
-        <p>"Rocky, un labrador juguetón, ahora es el mejor amigo de una familia con dos pequeños en Salamanca."</p>
-        <p>"Mia, una hermosa gatita, fue adoptada por una estudiante de la universidad local y ahora tiene un compañero de estudio."</p>
-    </section>
+    <!-- Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <table class="eventos-table">
+                <thead>
+                    <tr>
+                        <th>Detalles del Evento</th>
+                        <th>Información</th>
+                    </tr>
+                </thead>
+                <tbody id="modalTableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    <script src="./js/index.js"></script>
+    <script>
+        const eventDetails = {
+            "Feria de Adopciones": {
+                "Fecha": "8 de diciembre, 2024",
+                "Hora": "10:00 AM - 4:00 PM",
+                "Lugar": "Parque Central, Salamanca",
+                "Descripción": "Evento para encontrar hogares para perros y gatos necesitados",
+                "Entrada": "Gratis",
+                "Actividades": "Adopciones, información sobre tenencia responsable de mascotas"
+            },
+            "Carrera con Mascotas": {
+                "Fecha": "15 de diciembre, 2024",
+                "Hora": "7:00 AM - 11:00 AM",
+                "Lugar": "Malecón del Río, Salamanca",
+                "Descripción": "Carrera benéfica para apoyar a Junt-Dogs",
+                "Inscripción": "$100 MXN",
+                "Categorías": "Individual, Familiar, Mascotas"
+            },
+            "Colecta para Junt-Dogs": {
+                "Fecha": "22 de diciembre, 2024",
+                "Hora": "6:00 PM - 9:00 PM",
+                "Lugar": "Auditorio Municipal, Salamanca",
+                "Descripción": "Concierto benéfico para recaudar fondos",
+                "Entrada": "$150 MXN",
+                "Artistas": "Bandas locales, música en vivo"
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const modal = document.getElementById('eventModal');
+            const span = document.getElementsByClassName('close')[0];
+            const modalTitle = document.getElementById('modalTitle');
+            const modalTableBody = document.getElementById('modalTableBody');
+
+            const eventCards = document.querySelectorAll('.eventos-cards .card');
+            eventCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const eventTitle = this.querySelector('h4').textContent;
+                    const details = eventDetails[eventTitle];
+
+                    modalTitle.textContent = eventTitle;
+                    modalTableBody.innerHTML = '';
+
+                    for (let [key, value] of Object.entries(details)) {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `<td><strong>${key}</strong></td><td>${value}</td>`;
+                        modalTableBody.appendChild(row);
+                    }
+
+                    modal.style.display = 'block';
+                    setTimeout(() => {
+                        modal.querySelector('.modal-content').classList.add('show');
+                    }, 10);
+                });
+            });
+
+            span.onclick = function () {
+                modal.style.display = 'none';
+            }
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        });
+    </script>
 </body>
-    <footer align="center">
-        <hr class="divider">
-        <p class="footer-text">Junt-Dogs &copy; 2024 - Adopta un amigo hoy mismo. Todos los derechos reservados.</p>
+       <!-- Footer -->
+       <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Junt-Dogs</h5>
+                    <p>
+                        Dedicados a encontrar hogares amorosos para perros y gatos necesitados en Salamanca, Guanajuato.
+                    </p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Links Rápidos</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="Adopciones.html" class="text-dark">Adopciones</a></li>
+                        <li><a href="Nosotros.html" class="text-dark">Quiénes Somos</a></li>
+                        <li><a href="Contacto.html" class="text-dark">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-0">Síguenos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#!" class="text-dark">Facebook</a></li>
+                        <li><a href="#!" class="text-dark">Instagram</a></li>
+                        <li><a href="#!" class="text-dark">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2024 Junt-Dogs - Adopta un amigo hoy mismo
+        </div>
     </footer>
 </html>
