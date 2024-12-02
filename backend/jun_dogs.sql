@@ -186,7 +186,11 @@ COMMIT;
 
 INSERT INTO `animales` (`animal_id`, `nombre`, `tipo_animal`, `tamaño`, `foto_url`, `descripcion`, `vacunas`, `estado_adopcion`)
 VALUES
-(NULL, 'Max', 'Perro', 'Grande', 'https://www.ngenespanol.com/wp-content/uploads/2024/03/estos-son-los-animales-que-no-deberias-tener-como-mascotas.jpg', 'Un perro amistoso y juguetón que ama correr en el parque.', 'Rabia, Parvovirus', 'Disponible'),
-(NULL, 'Mia', 'Gato', 'Pequeño', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5IsWeGH1zA3ZHMEHRLkiRCRUc4q7PzZwRsg&s', 'Una gata tranquila que disfruta dormir al sol.', 'Leucemia Felina, Rabia', 'Disponible'),
-(NULL, 'Rocky', 'Perro', 'Mediano', 'https://images.pexels.com/photos/47547/squirrel-animal-cute-rodents-47547.jpeg?cs=srgb&dl=pexels-pixabay-47547.jpg&fm=jpg', 'Perro rescatado, valiente y leal, ideal para una familia activa.', 'Rabia, Moquillo', 'Disponible'),
-(NULL, 'Luna', 'Otro', 'Pequeño', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaBkz0geqhCevYfegYusMwyJjsV_3Tthrq3w&s', 'Conejita blanca y suave, perfecta como mascota de interior.', 'Mixomatosis', 'Disponible');
+(NULL, 'Max', 'Perro', 'Grande', 'https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg', 'Un perro amistoso y juguetón que ama correr en el parque.', 'Rabia, Parvovirus', 'Disponible'),
+(NULL, 'Mia', 'Gato', 'Pequeño', 'https://images.unsplash.com/photo-1543852786-1cf6624b9987?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2F0c3xlbnwwfHwwfHx8MA%3D%3D', 'Una gata tranquila que disfruta dormir al sol.', 'Leucemia Felina, Rabia', 'Disponible'),
+(NULL, 'Rocky', 'Perro', 'Mediano', 'https://spca.bc.ca/wp-content/uploads/2023/06/happy-samoyed-dog-outdoors-in-summer-field.jpg', 'Perro rescatado, valiente y leal, ideal para una familia activa.', 'Rabia, Moquillo', 'Disponible'),
+(NULL, 'Luna', 'Otro', 'Pequeño', 'https://www.adiosmascota.es/wp-content/uploads/2022/01/white-rabbit-on-the-grass.jpg', 'Conejita blanca y suave, perfecta como mascota de interior.', 'Mixomatosis', 'Disponible'),
+(NULL, 'Pelusa', 'Perro', 'Mediano', 'https://i.pinimg.com/originals/c8/bc/32/c8bc325ed1a96a2bc33e2e8a0527bc92.jpg', 'Perra cariñosa y enérgica, perfecta para niños.', 'Rabia, Parvovirus', 'Disponible'),
+(NULL, 'Simba', 'Gato', 'Grande', 'https://fbi.cults3d.com/uploaders/32338244/illustration-file/f23d00d1-2861-40af-8e83-1e8f5eda7403/WhatsApp-Image-2024-08-27-at-6.36.25-PM.jpeg', 'Gato juguetón y curioso, le encanta explorar.', 'Leucemia Felina, Rabia', 'Disponible'),
+(NULL, 'Charlie', 'Perro', 'Pequeño', 'https://s1.elespanol.com/2022/03/16/curiosidades/mascotas/657694610_222735436_1706x960.jpg', 'Perro pequeño y valiente, ideal para apartamentos.', 'Rabia, Moquillo', 'Disponible'),
+(NULL, 'Nala', 'Otro', 'Mediano', 'https://supermascotas.cl/wp-content/uploads/2017/11/coneja_ed49.jpg', 'Conejita activa y curiosa, necesita espacio para correr.', 'Mixomatosis', 'Disponible');
